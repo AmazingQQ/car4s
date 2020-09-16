@@ -10,6 +10,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
         
    		<!-- 配置controller在哪个包下 -->
     	<context:component-scan base-package="com.xiaoyu.car4s.controller"></context:component-scan>
@@ -26,6 +27,27 @@
 	   	<!-- 解开静态资源 -->
 	   	<mvc:default-servlet-handler/>
 	   	
+	   		
+	   	<!-- 启动拦截器 -->
+	  	 <!-- <mvc:interceptors>
+	   		<mvc:interceptor>
+	   			拦截
+	   			<mvc:mapping path="/**"/>
+	   			放行
+	   			<mvc:exclude-mapping path="/user/login"/>
+	   			<mvc:exclude-mapping path="/user/doLogin"/>
+	   			<mvc:exclude-mapping path="/user/codeImg"/>
+	   			<bean class="com.xiaoyu.utils.First"></bean>
+	   		</mvc:interceptor>
+	   	</mvc:interceptors>
+	   	 -->
 	   	
+	   	
+	   	 <!-- 上传文件 的多媒体文件解析器-->
+	  	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  		<property name="defaultEncoding" value="UTF-8"></property>
+	  		<property name="maxInMemorySize" value="10240"></property>使用的最大内存
+	  		<property name="maxUploadSize" value="5242880"></property>上传文件的最大值
+	  	</bean> -->
 	  	
    </beans>

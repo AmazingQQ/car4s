@@ -32,4 +32,14 @@
 	</filter-mapping>
 	<!-- characterEncodingFilter字符编码过滤器 -->
 	
+	<!-- 启动Spring容器 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<!-- 启动Spring容器 -->
+	
 </web-app>
