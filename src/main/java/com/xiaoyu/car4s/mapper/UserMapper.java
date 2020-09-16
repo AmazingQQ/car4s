@@ -11,4 +11,7 @@ public interface UserMapper {
 	
 	@Select("select * from t_4s_user")
 	List<User> all();
+	
+	@Select("select * from t_4s_user where USERNAME=#{username}")
+	User findByUsername(String username);
 }

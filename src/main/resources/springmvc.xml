@@ -22,25 +22,28 @@
 	   	</bean>
 		
 		<!-- 注解驱动 -->
-   	    <mvc:annotation-driven/>
+   	    <mvc:annotation-driven></mvc:annotation-driven>
    	    
 	   	<!-- 解开静态资源 -->
 	   	<mvc:default-servlet-handler/>
 	   	
 	   		
 	   	<!-- 启动拦截器 -->
-	  	 <!-- <mvc:interceptors>
+	  	  <mvc:interceptors>
 	   		<mvc:interceptor>
-	   			拦截
+	   			<!--拦  截-->
 	   			<mvc:mapping path="/**"/>
-	   			放行
-	   			<mvc:exclude-mapping path="/user/login"/>
-	   			<mvc:exclude-mapping path="/user/doLogin"/>
-	   			<mvc:exclude-mapping path="/user/codeImg"/>
-	   			<bean class="com.xiaoyu.utils.First"></bean>
+	   			<!--放行-->
+	   			<mvc:exclude-mapping path="/login"/>
+	   			<mvc:exclude-mapping path="/doLogin"/>
+	   			<mvc:exclude-mapping path="/css/**"/>
+	   			<mvc:exclude-mapping path="/fonts/**"/>
+	   			<mvc:exclude-mapping path="/images/**"/>
+	   			<mvc:exclude-mapping path="/js/**"/>
+	   			<bean class="com.xiaoyu.car4s.utils.LoginInterceptor"></bean>
 	   		</mvc:interceptor>
 	   	</mvc:interceptors>
-	   	 -->
+	   	 
 	   	
 	   	
 	   	 <!-- 上传文件 的多媒体文件解析器-->
