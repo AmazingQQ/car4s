@@ -11,17 +11,20 @@ import com.xiaoyu.car4s.entity.User;
 import com.xiaoyu.car4s.service.UserService;
 
 @Controller
-public class Car4sController {
+public class IndexController {
 	
 	@Autowired 
 	private UserService userService;
 	
 	
 	
-	@RequestMapping("/hello")
-	public String haiHello(Model model) {
-		List<User> list = userService.all();
-		model.addAttribute("list",list);
+	@RequestMapping("/index")
+	public String index(Model model) {
 		return "index";
+	}
+	
+	@RequestMapping("/main")
+	public String main(Model model) {
+		return "main";
 	}
 }
