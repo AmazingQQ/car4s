@@ -1,14 +1,18 @@
 package com.xiaoyu.car4s.controller;
 
+
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.xiaoyu.car4s.entity.User;
+import com.xiaoyu.car4s.entity.UserLoginForm;
 import com.xiaoyu.car4s.service.UserService;
 
 @Controller
@@ -41,17 +45,27 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/doLogin")
-	public String doLogin(String username,String password,RedirectAttributes attr,HttpSession session ) {
-		User user=userService.findByUsername(username);
+	public String doLogin(@Valid @ModelAttribute("userLoginForm") UserLoginForm userForm,BindingResult br,RedirectAttributes attr,HttpSession session ) {
+		if(br.hasErrors()) {
+//			List<FieldError> list=br.getFieldErrors();
+//			for (FieldError error : list) {
+//				System.out.println("============"+error.getDefaultMessage());
+//			}
+			return "login";
+		}
+		
+		
+		
+		User user=userService.findByUsername(userForm.getUsername());
 		if(user !=null) {
-			if(user.getPassword().equals(password)) {
-				System.out.println("登陆成功");
+			if(user.getPassword().equals(userForm.getPassword())) {
+				System.out.println("登陆成功!!");
 				session.setAttribute("loginUser", user);
 				return "redirect:/index";
 			}else {
 				attr.addFlashAttribute("msg","密码错误!");
 				return "redirect:/login";
-			}
+			} 
 		}else {
 			System.out.println("登录失败!");
 			attr.addFlashAttribute("msg2","用户名错误!");

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 
 <!DOCTYPE html>
@@ -63,17 +64,24 @@
       <div class="login-header text-center">
         <a href="index.html"> <img alt="light year admin" src="images/logo-sidebar.png"> </a>
       </div>
-      <form action="${ctx }/doLogin" method="post">
+      <sf:form action="${ctx }/doLogin" method="post" id="loginForm" modelAttribute="userLoginForm">
         <div class="form-group has-feedback feedback-left">
-          <input type="text" placeholder="请输入您的用户名" class="form-control" name="username" id="username" />
           <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
-          <p>${msg2 }</p>
+          <input type="text" placeholder="请输入您的用户名" class="form-control" name="username" id="username" />
+         <span><sf:errors path="username"></sf:errors></span>
+         <c:if test="${msg2 !=null and msg2 !=''}">
+        	<div class="alert alert-success" role="alert">${msg2 }</div>
+        </c:if>
         </div>
         <div class="form-group has-feedback feedback-left">
-          <input type="password" placeholder="请输入密码" class="form-control" id="password" name="password" />
           <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
-          <p>${msg }</p>
+          <input type="password" placeholder="请输入密码" class="form-control" id="password" name="password" />
+      	 <span><sf:errors path="password"></sf:errors></span>
         </div>
+        
+        <c:if test="${msg !=null and msg !=''}">
+        	<div class="alert alert-success" role="alert">${msg }</div>
+        </c:if>
         <div class="form-group has-feedback feedback-left row">
           <div class="col-xs-7">
             <input type="text" name="captcha" class="form-control" placeholder="验证码">
@@ -86,7 +94,8 @@
         <div class="form-group">
           <button class="btn btn-block btn-primary" type="submit" >立即登录</button>
         </div>
-      </form>
+        
+      </sf:form>
       <hr>
       <footer class="col-sm-12 text-center">
         <p class="m-b-0">Copyright © 2019 <a href="http://lyear.itshubao.com">IT书包</a>. All right reserved</p>
@@ -96,6 +105,25 @@
 </div>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript">;</script>
+<!--消息提示-->
+<script src="js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="js/lightyear.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+<script type="text/javascript" src="js/jquery-validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/jquery-validate/messages_zh.min.js"></script>
+<script type="text/javascript">
+
+/* $("#loginForm").validate({
+    rules: {
+        username: {
+        	required: true,
+        	minlength: 6,
+        	maxlength: 16
+        },
+        password: "required"
+    }
+}); */
+ 
+</script>
 </body>
 </html>
