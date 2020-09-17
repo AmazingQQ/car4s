@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.xiaoyu.car4s.entity.User;
@@ -54,8 +55,6 @@ public class IndexController {
 			return "login";
 		}
 		
-		
-		
 		User user=userService.findByUsername(userForm.getUsername());
 		if(user !=null) {
 			if(user.getPassword().equals(userForm.getPassword())) {
@@ -72,4 +71,23 @@ public class IndexController {
 			return "redirect:/login";
 		}
 	}
+	
+	@RequestMapping("/register")
+	public String register() {
+		return "register";
+	}
+	
+	@RequestMapping("/doRegister")
+	public String doRegister(String username,String password) {
+		userService.register(username,password);
+		return "redirect:/login";
+	}
+	
+	@RequestMapping("/ajaxCheckUsername")
+	@ResponseBody
+	public Object ajaxCheckUsername(String username) {
+		User user=userService.findByUsername(username);
+		return user == null;
+	}
+	
 }

@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>登录页面 - 光年</title>
+<title>注册页面 - 光年</title>
 <link rel="icon" href="images/favicon.ico" type="image/ico">
 <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
 <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -64,36 +64,21 @@
       <div class="login-header text-center">
         <a href="index"> <img alt="light year admin" src="images/logo-sidebar.png"> </a>
       </div>
-      <sf:form action="${ctx }/doLogin" method="post" id="loginForm" modelAttribute="userLoginForm">
+      <sf:form action="${ctx }/doRegister" method="post" id="loginForm">
         <div class="form-group has-feedback feedback-left">
           <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
           <input type="text" placeholder="请输入您的用户名" class="form-control" name="username" id="username" />
-         <span><sf:errors path="username"></sf:errors></span>
-         <c:if test="${msg2 !=null and msg2 !=''}">
-        	<div class="alert alert-success" role="alert">${msg2 }</div>
-        </c:if>
         </div>
         <div class="form-group has-feedback feedback-left">
           <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
           <input type="password" placeholder="请输入密码" class="form-control" id="password" name="password" />
-      	 <span><sf:errors path="password"></sf:errors></span>
         </div>
-        
-        <c:if test="${msg !=null and msg !=''}">
-        	<div class="alert alert-success" role="alert">${msg }</div>
-        </c:if>
-        <div class="form-group has-feedback feedback-left row">
-          <div class="col-xs-7">
-            <input type="text" name="captcha" class="form-control" placeholder="验证码">
-            <span class="mdi mdi-check-all form-control-feedback" aria-hidden="true"></span>
-          </div>
-          <div class="col-xs-5">
-            <img src="images/captcha.png" class="pull-right" id="captcha" style="cursor: pointer;" onclick="this.src=this.src+'?d='+Math.random();" title="点击刷新" alt="captcha">
-          </div>
+        <div class="form-group has-feedback feedback-left">
+          <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
+          <input type="password" placeholder="请确认密码" class="form-control" id="password2" name="password2" />
         </div>
         <div class="form-group">
-          <button class="btn btn-block btn-primary" type="submit" >立即登录</button>
-          <button class="btn btn-block btn-purple" type="button" onclick="location.href='register'">立即注册</button>
+          <button class="btn btn-block btn-primary" type="submit" >立即注册</button>
         </div>
         
       </sf:form>
@@ -114,16 +99,33 @@
 <script type="text/javascript" src="js/jquery-validate/messages_zh.min.js"></script>
 <script type="text/javascript">
 
-/* $("#loginForm").validate({
+$("#loginForm").validate({
     rules: {
         username: {
         	required: true,
         	minlength: 6,
-        	maxlength: 16
+        	maxlength: 16,
+        	remote:"ajaxCheckUsername"
         },
-        password: "required"
+        password:{
+        	required: true,
+        	minlength: 3,
+        	maxlength: 6
+        },
+        password2:{
+        	equalTo:"#password"
+        }
+    },
+    messages:{
+    	username:{
+    		remote:"用户名已被注册"
+    	},
+    	password2:{
+    		equalTo:"两次密码不一致啊!兄弟"
+    	}
+    
     }
-}); */
+});
  
 </script>
 </body>
