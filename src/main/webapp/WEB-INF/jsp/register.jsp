@@ -64,7 +64,7 @@
       <div class="login-header text-center">
         <a href="index"> <img alt="light year admin" src="images/logo-sidebar.png"> </a>
       </div>
-      <sf:form action="${ctx }/doRegister" method="post" id="loginForm">
+      <form action="${ctx }/doRegister" method="post" id="loginForm">
         <div class="form-group has-feedback feedback-left">
           <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
           <input type="text" placeholder="请输入您的用户名" class="form-control" name="username" id="username" />
@@ -79,9 +79,10 @@
         </div>
         <div class="form-group">
           <button class="btn btn-block btn-primary" type="submit" >立即注册</button>
+          <button class="btn btn-block btn-purple" type="button" onclick="location.href='login'" >立即登录</button>
         </div>
         
-      </sf:form>
+      </form>
       <hr>
       <footer class="col-sm-12 text-center">
         <p class="m-b-0">Copyright © 2019 <a href="http://lyear.itshubao.com">IT书包</a>. All right reserved</p>

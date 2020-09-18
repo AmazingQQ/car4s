@@ -78,8 +78,8 @@ public class IndexController {
 	}
 	
 	@RequestMapping("/doRegister")
-	public String doRegister(String username,String password) {
-		userService.register(username,password);
+	public String doRegister(User user) {
+		userService.register(user);
 		return "redirect:/login";
 	}
 	
@@ -89,5 +89,6 @@ public class IndexController {
 		User user=userService.findByUsername(username);
 		return user == null;
 	}
+	
 	
 }

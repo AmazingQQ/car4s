@@ -28,7 +28,7 @@
       
       <!-- logo -->
       <div id="logo" class="sidebar-header">
-        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+        <a href="/index"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
       </div>
       <div class="lyear-layout-sidebar-scroll"> 
         
@@ -36,77 +36,9 @@
           <ul class="nav nav-drawer">
             <li class="nav-item active"> <a class="multitabs" href="main"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> <span>UI 元素</span></a>
+              <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> <span>系统管理</span></a>
               <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="lyear_ui_buttons.html">按钮</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_cards.html">卡片</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_grid.html">格栅</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_icons.html">图标</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_tables.html">表格</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_modals.html">模态框</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_tooltips_popover.html">提示 / 弹出框</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_alerts.html">警告框</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_pagination.html">分页</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_progress.html">进度条</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_tabs.html">标签页</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_typography.html">排版</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_step.html">步骤</a> </li>
-                <li> <a class="multitabs" href="lyear_ui_other.html">其他</a> </li>
-              </ul>
-            </li>
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> <span>表单</span></a>
-              <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="lyear_forms_elements.html">基本元素</a> </li>
-                <li> <a class="multitabs" href="lyear_forms_radio.html">单选框</a> </li>
-                <li> <a class="multitabs" href="lyear_forms_checkbox.html">复选框</a> </li>
-                <li> <a class="multitabs" href="lyear_forms_switch.html">开关</a> </li>
-              </ul>
-            </li>
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> <span>示例页面</span></a>
-              <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="lyear_pages_doc.html">文档列表</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_gallery.html">图库列表</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_config.html">网站配置</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_rabc.html">设置权限</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_add_doc.html">新增文档</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_guide.html">表单向导</a> </li>
-                <li> <a class="multitabs" href="lyear_pages_data_table.html">表格插件</a> </li>
-                <li> <a href="lyear_pages_login.html" target="_blank">登录页面</a> </li>
-                <li> <a href="lyear_pages_error.html" target="_blank">错误页面</a> </li>
-              </ul>
-            </li>
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-language-javascript"></i> <span>JS 插件</span></a>
-              <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="lyear_js_datepicker.html">日期选取器</a> </li>
-                <li> <a class="multitabs" href="lyear_js_sliders.html">滑块</a> </li>
-                <li> <a class="multitabs" href="lyear_js_colorpicker.html">选色器</a> </li>
-                <li> <a class="multitabs" href="lyear_js_chartjs.html">Chart.js</a> </li>
-                <li> <a class="multitabs" href="lyear_js_jconfirm.html">对话框</a> </li>
-                <li> <a class="multitabs" href="lyear_js_tags_input.html">标签插件</a> </li>
-                <li> <a class="multitabs" href="lyear_js_notify.html">通知消息</a> </li>
-              </ul>
-            </li>
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-menu"></i> <span>多级菜单</span></a>
-              <ul class="nav nav-subnav">
-                <li> <a href="#!">一级菜单</a> </li>
-                <li class="nav-item nav-item-has-subnav"> 
-                  <a href="#!">一级菜单</a>
-                  <ul class="nav nav-subnav">
-                    <li> <a href="#!">二级菜单</a> </li>
-                    <li class="nav-item nav-item-has-subnav"> 
-                      <a href="#!">二级菜单</a>
-                      <ul class="nav nav-subnav">
-                        <li> <a href="#!">三级菜单</a> </li>
-                        <li> <a href="#!">三级菜单</a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li> <a href="#!">一级菜单</a> </li>
+                <li> <a class="multitabs" href="user/index">用户管理</a> </li>
               </ul>
             </li>
           </ul>
@@ -141,7 +73,7 @@
                 <span>${loginUser.name}<span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li> <a class="multitabs" data-url="lyear_pages_profile.html" href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>
+                <li> <a class="multitabs" data-url="user/profile" href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>
                 <li> <a class="multitabs" data-url="lyear_pages_edit_pwd.html" href="javascript:void(0)"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
                 <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
                 <li class="divider"></li>

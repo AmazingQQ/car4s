@@ -35,6 +35,7 @@
 	   			<mvc:exclude-mapping path="/login"/>
 	   			<mvc:exclude-mapping path="/doLogin"/>
 	   			<mvc:exclude-mapping path="/register"/>
+	   			<mvc:exclude-mapping path="/doRegister"/>
 	   			<mvc:exclude-mapping path="/ajaxCheckUsername"/>
 	   			<mvc:exclude-mapping path="/css/**"/>
 	   			<mvc:exclude-mapping path="/fonts/**"/>
