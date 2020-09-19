@@ -11,7 +11,7 @@ public class User {
 	private Integer deptId;//所属部门(FK)
 	private String name;//员工姓名
 	private Integer sex;//性别(1-男,2-女)
-	private Date dirthday;//出生日期
+	private Date birthday;//出生日期BIRTHDAY
 	private Date entryDate;//入职时间
 	private String username;//登录用户名
 	private String password;//登录密码

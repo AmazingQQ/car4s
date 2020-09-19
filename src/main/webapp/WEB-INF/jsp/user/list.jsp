@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -59,206 +58,48 @@
                       <input type="checkbox" id="check-all"><span></span>
                     </label>
                   </th>
-                  <th>编号</th>
-                  <th>标题</th>
-                  <th>书籍</th>
-                  <th>作者</th>
-                  <th>阅读量</th>
-                  <th>状态</th>
+                  <th>记录ID</th>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>所属部门</th>
+                  <th>出生日期</th>
+                  <th>入职时间</th>
+                  <th>用户名</th>
+                  <th>登录状态</th>
+                  <th>申请状态</th>
+                  <th>角色</th>
+                  
+                  <th>创建日期</th>
                   <th>操作</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="1"><span></span>
-                    </label>
-                  </td>
-                  <td>1</td>
-                  <td>第01章 天涯思君不可忘</td>
-                  <td>《倚天屠龙记》</td>
-                  <td>金庸</td>
-                  <td>36</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="2"><span></span>
-                    </label>
-                  </td>
-                  <td>2</td>
-                  <td>第01章 古道腾驹惊白发，危峦快剑识青翎</td>
-                  <td>《书剑恩仇录》</td>
-                  <td>金庸</td>
-                  <td>44</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="3"><span></span>
-                    </label>
-                  </td>
-                  <td>3</td>
-                  <td>一个戴水獭皮帽子的朋友</td>
-                  <td>《湘行散记》</td>
-                  <td>沈从文</td>
-                  <td>39</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="4"><span></span>
-                    </label>
-                  </td>
-                  <td>4</td>
-                  <td>你是要灼灼容颜，还是要宜其室家</td>
-                  <td>《诗三百：思无邪》</td>
-                  <td>安意如</td>
-                  <td>36</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="5"><span></span>
-                    </label>
-                  </td>
-                  <td>5</td>
-                  <td>海上的消息</td>
-                  <td>《打开心内的窗》</td>
-                  <td>林清玄</td>
-                  <td>32</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="6"><span></span>
-                    </label>
-                  </td>
-                  <td>6</td>
-                  <td>楔子 一阕词来 南国清秋魂梦绕 十年人散 绣房红烛剑光寒</td>
-                  <td>《七剑下天山》</td>
-                  <td>梁羽生</td>
-                  <td>42</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="7"><span></span>
-                    </label>
-                  </td>
-                  <td>7</td>
-                  <td>祝福</td>
-                  <td>《彷徨》</td>
-                  <td>鲁迅</td>
-                  <td>40</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="8"><span></span>
-                    </label>
-                  </td>
-                  <td>8</td>
-                  <td>一个女长年的故事</td>
-                  <td>《莫泊桑短篇小说集》</td>
-                  <td>莫泊桑</td>
-                  <td>36</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="9"><span></span>
-                    </label>
-                  </td>
-                  <td>9</td>
-                  <td>第一回 赈民饥包公奉旨　图谋害庞相施计</td>
-                  <td>《五虎征西》</td>
-                  <td>李雨堂</td>
-                  <td>35</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label class="lyear-checkbox checkbox-primary">
-                      <input type="checkbox" name="ids[]" value="10"><span></span>
-                    </label>
-                  </td>
-                  <td>10</td>
-                  <td>第一回 于按察山东赴任　邹其仁赴路登程</td>
-                  <td>《于公案》</td>
-                  <td>佚名</td>
-                  <td>37</td>
-                  <td><font class="text-success">正常</font></td>
-                  <td>
-                    <div class="btn-group">
-                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
-                    </div>
-                  </td>
-                </tr>
+              	<c:forEach items="${users }" var="user">
+	                <tr>
+	                  <td>
+	                    <label class="lyear-checkbox checkbox-primary">
+	                      <input type="checkbox" name="ids[]" value="${user.id }"><span></span>
+	                    </label>
+	                  </td>
+	                  <td>${user.id }</td>
+	                  <td>${user.name }</td>
+	                  <td>${user.sex }</td>
+	                  <td>${user.deptId }</td>
+	                  <td><fmt:formatDate value="${user.birthday }" pattern="yyyy-MM-dd"/></td>
+	                  <td><fmt:formatDate value="${user.entryDate }" pattern="yyyy-MM-dd"/></td>
+	                  <td>${user.username }</td>
+	                  <td>${user.loginFlag}</td>
+	                  <td>${user.applyFlag}</td>
+	                  <td>${user.roleId}</td>
+	                  <td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd"/></td>
+	                  <td>
+	                    <div class="btn-group">
+	                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
+	                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
+	                    </div>
+	                  </td>
+	                </tr>
+               </c:forEach>
               </tbody>
             </table>
           </div>

@@ -36,7 +36,7 @@
           <ul class="nav nav-drawer">
             <li class="nav-item active"> <a class="multitabs" href="main"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> <span>系统管理</span></a>
+              <a href="javascript:void(0)"><i class="mdi mdi-sticker-emoji"></i> <span>系统管理</span></a>
               <ul class="nav nav-subnav">
                 <li> <a class="multitabs" href="user/index">用户管理</a> </li>
               </ul>
@@ -69,7 +69,7 @@
           <ul class="topbar-right">
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
-                <img class="img-avatar img-avatar-48 m-r-10" src="/myupload/${user.pic}" alt="" />
+                <img class="img-avatar img-avatar-48 m-r-10" src="/myupload/${loginUser.pic}" alt="" />
                 <span>${loginUser.name}<span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">

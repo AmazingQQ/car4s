@@ -124,6 +124,10 @@
         password: "required"
     }
 }); */
+
+if(window !== top){
+	window.top.location = window.location 
+}
  
 </script>
 </body>
