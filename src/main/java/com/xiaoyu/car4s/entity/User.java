@@ -20,5 +20,5 @@ public class User {
 	private Integer applyFlag;//申请状态(1-申请中,2-通过)
 	private Integer roleId;//角色ID(FK)
 	private Integer delFlag;//删除标志(1-未删,0-已删)
-	
+	private String pic;//用户头像
 }

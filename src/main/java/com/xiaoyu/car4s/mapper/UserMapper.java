@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.xiaoyu.car4s.entity.User;
 
@@ -18,4 +19,7 @@ public interface UserMapper {
 	
 	@Insert("insert into t_4s_user (username,password) values(#{username},#{password})")
 	void register(User user);
+	
+	@Update("update t_4s_user set pic=#{pic} where id=#{id}")
+	void update(User user);
 }

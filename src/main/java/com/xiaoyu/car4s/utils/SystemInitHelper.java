@@ -6,6 +6,12 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
+/**
+ * 系统初始化类
+ * 1.将ContextPath放到名为ctx的变量中
+ * @author Administrator
+ *
+ */
 @Component
 public class SystemInitHelper implements InitializingBean,ServletContextAware{
 	

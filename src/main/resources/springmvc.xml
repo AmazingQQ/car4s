@@ -70,11 +70,11 @@
 	</bean>
 		
 	   	 <!-- 上传文件 的多媒体文件解析器-->
-	  	<!-- <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	  		<property name="defaultEncoding" value="UTF-8"></property>
-	  		<property name="maxInMemorySize" value="10240"></property>使用的最大内存
-	  		<property name="maxUploadSize" value="5242880"></property>上传文件的最大值
-	  	</bean> -->
+	  		<property name="maxInMemorySize" value="10240"></property><!--  使用的最大内存-->
+	  		<property name="maxUploadSize" value="5242880"></property><!--上传文件的最大值  -->
+	  	</bean>
 	  	
 	  <!-- 注解驱动 -->
    	    <mvc:annotation-driven validator="validator"></mvc:annotation-driven>

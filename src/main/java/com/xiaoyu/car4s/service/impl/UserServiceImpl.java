@@ -33,4 +33,11 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public User picture(User user) {
+		userMapper.update(user);
+		User user2 = userMapper.findByUsername(user.getUsername());
+		return user2;
+	}
+
 }

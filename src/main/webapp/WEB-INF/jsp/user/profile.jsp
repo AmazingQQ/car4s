@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="zh">
@@ -27,33 +26,71 @@
       <div class="card">
         <div class="card-body">
           
-          <div class="edit-avatar">
-            <img src="${ctx }/images/users/avatar.jpg" alt="..." class="img-avatar">
-            <div class="avatar-divider"></div>
-            <div class="edit-avatar-content">
-              <button class="btn btn-default">修改头像</button>
-              <p class="m-0">选择一张你喜欢的图片,上传图片大小不能超过2M。</p>
+          <form method="post" action="${ctx }/user/update" class="site-form" enctype="multipart/form-data" id="formImg">
+          	<input type="text" name="id" value="${loginUser.id }" hidden="hidden">
+            <img src="/myupload/${user.pic }" alt="..." class="img-avatar" id="file_img">
+            <div class="avatar-divider">
+            	<br>
+            	&nbsp;&nbsp;&nbsp;<div class="btn btn-pink btn-xs" onclick="getFile()">修改头像</div>
+              	&nbsp;&nbsp;&nbsp;选择一张你喜欢的图片,上传图片大小不能超过2M。
+           		 <input type="file" name="picFile" id="inputImage" class="hide">
             </div>
-          </div>
           <hr>
-          <form method="post" action="#!" class="site-form">
-            <div class="form-group">
+            <%-- <div class="form-group">
               <label for="username">用户名</label>
-              <input type="text" class="form-control" name="username" id="username" value="lightyear" disabled="disabled" />
+              <input type="text" class="form-control" name="username" id="username" value="${user.username }" disabled="disabled" />
             </div>
             <div class="form-group">
-              <label for="nickname">昵称</label>
-              <input type="text" class="form-control" name="nickname" id="nickname" placeholder="输入您的昵称" value="笔下光年">
+              <label for="name">姓名</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="输入您的姓名" value="${user.name }">
+            </div>
+            
+            <div class="form-group">
+              <label for="password">密码</label>
+              <input type="password" class="form-control" name="password" id="password" placeholder="输入您的密码" value="${user.password}">
             </div>
             <div class="form-group">
-              <label for="email">邮箱</label>
-              <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="请输入正确的邮箱地址" value="3331653644@qq.com">
-              <small id="emailHelp" class="form-text text-muted">请保证您填写的邮箱地址是正确的。</small>
+              <label for="dirthday">出生日期</label>
+              <input type="date" class="form-control" name="dirthday" id="dirthday" value="${user.dirthday}">
             </div>
             <div class="form-group">
-              <label for="remark">简介</label>
-              <textarea class="form-control" name="remark" id="remark" rows="3"></textarea>
+              <label for="entryDate">入职日期</label>
+              <input type="date" class="form-control" name="entryDate" id="entryDate" value="${user.entryDate}">
             </div>
+            
+            <div class="form-group">
+              <label for="deptId">所属部门</label>
+              <select name="deptId">
+              	<option value="1"></option>
+              </select>
+              
+              <label for="roleId">用户角色</label>
+              <select name="roleId">
+              	<option value="1"></option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+	            <label for="sex">性别</label>
+	              <select name="sex">
+	              	<option value="1">男</option>
+	              	<option value="2">女</option>
+	              </select>
+	              
+	            <label for="loginFlag">登录状态</label>
+	              <select name="loginFlag">
+	              	<option value="1">冻结</option>
+	              	<option value="2">正常</option>
+	              </select>
+	              
+	            <label for="applyFlag">申请状态</label>
+	              <select name="applyFlag">
+	              	<option value="1">申请中</option>
+	              	<option value="2">通过</option>
+	              	<option value="3">不通过</option>
+	              </select>
+            </div> --%>
+            
             <button type="submit" class="btn btn-primary">保存</button>
           </form>
  
@@ -65,8 +102,30 @@
   
 </div>
 
-<script type="text/javascript" src="${ctx }/js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx }/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/main.min.js"></script>
+
+  <script type="text/javascript">
+	  function getFile(){
+		    $("#inputImage").click();
+	  }
+	  
+	  
+	  var input  = document.getElementById("inputImage");   // 获取上传图片input（file）
+	  input.onchange = function(){// 改变事件
+	      var file = this.files[0];// 获取上传的第一张图片，若希望input实现多文件上传。添加属性multiple="multiple"。
+	      if(!!file){// 判断是否选择文件
+	          var reader = new FileReader();// 读取文件对象
+	          // 图片文件转换为base64
+	          reader.readAsDataURL(file);// 读取文件
+	          reader.onload = function(){// 读取完毕执行
+	                // 获取显示图片img。设置src属性地址为显示当前选择的图像
+	                document.getElementById("file_img").src = this.result;
+	          }
+	      }
+	  };
+   </script>
+
 </body>
 </html>
