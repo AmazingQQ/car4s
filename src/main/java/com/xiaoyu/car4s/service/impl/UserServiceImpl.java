@@ -1,6 +1,7 @@
 package com.xiaoyu.car4s.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,12 @@ public class UserServiceImpl implements UserService{
 		userMapper.update(user);
 		User user2 = userMapper.findByUsername(user.getUsername());
 		return user2;
+	}
+
+	@Override
+	public List<User> findByParam(Map<String, Object> map) {
+		List<User> userList=userMapper.findByParam(map);
+		return userList;
 	}
 
 }

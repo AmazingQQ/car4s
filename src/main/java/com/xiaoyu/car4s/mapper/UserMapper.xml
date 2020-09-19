@@ -5,7 +5,35 @@
 <mapper namespace="com.xiaoyu.car4s.mapper.UserMapper"><!-- 权限定名 -->
 	<cache></cache><!-- 开启二级缓存 -->
 	
-	
+	<select id="findByParam" resultType="user" parameterType="map">
+		select * from t_4s_user
+		<where>
+			<if test="name !=null and name !=''">
+				and name like concat('%',#{name},'%')
+			</if>
+			
+			<if test="username !=null and username !=''">
+				and username like concat('%',#{username},'%')
+			</if>
+			
+			<if test="entryDateStart !=null">
+				and entry_date &gt; #{entryDateStart}
+			</if>
+			
+			<if test="entryDateEnd !=null">
+				and entry_date &lt; #{entryDateEnd}
+			</if>
+			
+			<if test="deptId !=null and deptId !=''">
+				and dept_id=#{deptId}
+			</if>
+			
+			<if test="loginFlag !=null and loginFlag !=''">
+				and login_flag=#{loginFlag}
+			</if>
+		
+		</where>
+	</select>
 	
 	
 	

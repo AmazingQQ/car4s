@@ -15,6 +15,8 @@
 <meta name="author" content="yinqi">
 <link href="${ctx }/css/bootstrap.min.css" rel="stylesheet">
 <link href="${ctx }/css/materialdesignicons.min.css" rel="stylesheet">
+<!--日期选择插件-->
+<link rel="stylesheet" href="${ctx }/js/bootstrap-datepicker/bootstrap-datepicker3.min.css">
 <link href="${ctx }/css/style.min.css" rel="stylesheet">
 </head>
   
@@ -25,28 +27,89 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-toolbar clearfix">
-          <form class="pull-right search-bar" method="get" action="#!" role="form">
-            <div class="input-group">
-              <div class="input-group-btn">
-                <input type="hidden" name="search_field" id="search-field" value="title">
-                <button class="btn btn-default dropdown-toggle" id="search-btn" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                标题 <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li> <a tabindex="-1" href="javascript:void(0)" data-field="title">标题</a> </li>
-                  <li> <a tabindex="-1" href="javascript:void(0)" data-field="cat_name">栏目</a> </li>
-                </ul>
+          <form class="row" method="get" action="index" role="form" id="f1">
+           <div><h4>快速查询</h4></div>
+             <div class="form-group col-md-4">
+              <label for="name">姓名</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="请输入姓名" value="${param.name }">
+             </div>
+             
+             <div class="form-group col-md-4">
+              <label for="entryDateStart">入职日期始</label>
+              <input class="form-control js-datepicker m-b-10" type="text" id="entryDateStart" value="${param.entryDateStart }"
+              name="entryDateStart" data-date-format="yyyy-mm-dd" placeholder="入职日期始" autocomplete="off">
+             </div>
+             
+             <div class="form-group col-md-4">
+              <label for="entryDateEnd">入职日期止</label>
+              <input class="form-control js-datepicker m-b-10" type="text" id="entryDateEnd" value="${param.entryDateEnd }"
+              name="entryDateEnd" data-date-format="yyyy-mm-dd" placeholder="入职日期止" autocomplete="off">
+             </div>
+             
+             <div class="form-group col-md-4">
+              <label for="username">用户名</label>
+              <input type="text" class="form-control" id="username" value="${param.username }"
+              name="username" value="" placeholder="请输入用户名">
+             </div>
+            
+             
+             <div class="form-group col-md-4">
+              <label for="type">所属部门</label>
+              <div class="form-controls">
+                <select name="deptId" class="form-control" id="deptId">
+                	<option value="">--请选择--</option>
+                	<c:forEach items="${depts }" var="dept">
+                		<c:choose>
+						 	<c:when test="${param.deptId == dept.id }">
+                 		 		<option value="${dept.id }" selected>${dept.name }</option>
+						 	</c:when>
+						 	<c:otherwise>
+                 		 		<option value="${dept.id }">${dept.name }</option>
+						 	</c:otherwise>
+						 </c:choose>
+                	</c:forEach>
+                </select>
               </div>
-              <input type="text" class="form-control" value="" name="keyword" placeholder="请输入名称">
             </div>
+            
+              <div class="form-group col-md-4">
+              <label for="loginFlag">登录状态</label>
+              <div class="form-controls">
+              <select name="loginFlag" class="form-control" >
+              	<option value="">--请选择--</option>
+              	<c:choose>
+				 	<c:when test="${param.loginFlag == 1 }">
+               		 		<option value="1" selected>--正常--</option>
+				 	</c:when>
+				 	<c:otherwise>
+               		 		<option value="1">--正常--</option>
+				 	</c:otherwise>
+				 </c:choose>
+				 
+              	<c:choose>
+				 	<c:when test="${param.loginFlag == 2 }">
+               		 		<option value="2" selected>--冻结--</option>
+				 	</c:when>
+				 	<c:otherwise>
+               		 		<option value="2">--冻结--</option>
+				 	</c:otherwise>
+				 </c:choose>
+              </select>
+              </div>
+             </div>
+             
+             <div class="form-group col-md-12">
+             	<button type="submit" class="btn btn-pink ajax-post"><i class="mdi mdi-magnify"></i>查询</button>
+             	<button type="reset" class="btn btn-brown ajax-post" id="chongzhi"><i class="mdi mdi-backup-restore"></i>重置</button>
+             	<button type="button" onclick="location.href='user/add'" class="btn btn-purple m-r-5"><i class="mdi mdi-plus"></i> 新增</button>
+             	<button type="button" onclick="location.href='user/index'" class="btn btn-success m-r-5"><i class="mdi mdi-check"></i> 启用</button>
+             	<button type="button" onclick="location.href='user/index'" class="btn btn-warning m-r-5"><i class="mdi mdi-block-helper"></i> 禁用</button>
+             	<button type="button" onclick="location.href='user/delete'" class="btn btn-danger"><i class="mdi mdi-window-close"></i> 删除</button>
+             </div>
           </form>
-          <div class="toolbar-btn-action">
-            <a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
-            <a class="btn btn-success m-r-5" href="#!"><i class="mdi mdi-check"></i> 启用</a>
-            <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
-            <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
-          </div>
         </div>
+        
+        
         <div class="card-body">
           
           <div class="table-responsive">
@@ -68,7 +131,6 @@
                   <th>登录状态</th>
                   <th>申请状态</th>
                   <th>角色</th>
-                  
                   <th>创建日期</th>
                   <th>操作</th>
                 </tr>
@@ -103,21 +165,7 @@
               </tbody>
             </table>
           </div>
-          <ul class="pagination">
-            <li class="disabled"><span>«</span></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#1">2</a></li>
-            <li><a href="#1">3</a></li>
-            <li><a href="#1">4</a></li>
-            <li><a href="#1">5</a></li>
-            <li><a href="#1">6</a></li>
-            <li><a href="#1">7</a></li>
-            <li><a href="#1">8</a></li>
-            <li class="disabled"><span>...</span></li>
-            <li><a href="#!">14452</a></li>
-            <li><a href="#!">14453</a></li>
-            <li><a href="#!">»</a></li>
-          </ul>
+          <%@ include file="../page/page_nav.jsp" %>
  
         </div>
       </div>
@@ -129,6 +177,9 @@
 
 <script type="text/javascript" src="${ctx }/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/bootstrap.min.js"></script>
+<!--日期选择插件-->
+<script src="${ctx }/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="${ctx }/js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/main.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -137,6 +188,15 @@ $(function(){
         $('#search-field').val(field);
         $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
     });
+    
+  //重置
+    
+   	$("#chongzhi").click(function () {
+   		$(".form-control").each(function(){
+   			$(this).removeAttr("value");
+   		})
+   	});
+    
 });
 </script>
 </body>

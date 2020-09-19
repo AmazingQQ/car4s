@@ -1,6 +1,7 @@
 package com.xiaoyu.car4s.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.xiaoyu.car4s.entity.User;
 
@@ -13,5 +14,7 @@ public interface UserService {
 	void register(User user);
 
 	User picture(User user);
+
+	List<User> findByParam(Map<String, Object> map);
 
 }

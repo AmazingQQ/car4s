@@ -1,6 +1,7 @@
 package com.xiaoyu.car4s.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -22,4 +23,6 @@ public interface UserMapper {
 	
 	@Update("update t_4s_user set pic=#{pic} where id=#{id}")
 	void update(User user);
+	
+	List<User> findByParam(Map<String, Object> map);
 }

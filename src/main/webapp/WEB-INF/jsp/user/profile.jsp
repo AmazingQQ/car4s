@@ -28,7 +28,7 @@
           
           <form method="post" action="${ctx }/user/update" class="site-form" enctype="multipart/form-data" id="formImg">
           	<input type="text" name="id" value="${loginUser.id }" hidden="hidden">
-            <img src="/myupload/${user.pic }" alt="..." class="img-avatar" id="file_img">
+            <img src="/myupload/${loginUser.pic }" alt="..." class="img-avatar" id="file_img">
             <div class="avatar-divider">
             	<br>
             	&nbsp;&nbsp;&nbsp;<div class="btn btn-pink btn-xs" onclick="getFile()">修改头像</div>
@@ -38,24 +38,24 @@
           <hr>
             <%-- <div class="form-group">
               <label for="username">用户名</label>
-              <input type="text" class="form-control" name="username" id="username" value="${user.username }" disabled="disabled" />
+              <input type="text" class="form-control" name="username" id="username" value="${loginUser.username }" disabled="disabled" />
             </div>
             <div class="form-group">
               <label for="name">姓名</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="输入您的姓名" value="${user.name }">
+              <input type="text" class="form-control" name="name" id="name" placeholder="输入您的姓名" value="${loginUser.name }">
             </div>
             
             <div class="form-group">
               <label for="password">密码</label>
-              <input type="password" class="form-control" name="password" id="password" placeholder="输入您的密码" value="${user.password}">
+              <input type="password" class="form-control" name="password" id="password" placeholder="输入您的密码" value="${loginUser.password}">
             </div>
             <div class="form-group">
               <label for="dirthday">出生日期</label>
-              <input type="date" class="form-control" name="dirthday" id="dirthday" value="${user.dirthday}">
+              <input type="date" class="form-control" name="dirthday" id="dirthday" value="${loginUser.dirthday}">
             </div>
             <div class="form-group">
               <label for="entryDate">入职日期</label>
-              <input type="date" class="form-control" name="entryDate" id="entryDate" value="${user.entryDate}">
+              <input type="date" class="form-control" name="entryDate" id="entryDate" value="${loginUser.entryDate}">
             </div>
             
             <div class="form-group">
