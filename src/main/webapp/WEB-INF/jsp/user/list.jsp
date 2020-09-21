@@ -17,6 +17,8 @@
 <link href="${ctx }/css/materialdesignicons.min.css" rel="stylesheet">
 <!--日期选择插件-->
 <link rel="stylesheet" href="${ctx }/js/bootstrap-datepicker/bootstrap-datepicker3.min.css">
+<!--对话框-->
+<link rel="stylesheet" href="${ctx }/js/jconfirm/jquery-confirm.min.css">
 <link href="${ctx }/css/style.min.css" rel="stylesheet">
 </head>
   
@@ -102,9 +104,7 @@
              	<button type="submit" class="btn btn-pink ajax-post"><i class="mdi mdi-magnify"></i>查询</button>
              	<button type="reset" class="btn btn-brown ajax-post" id="chongzhi"><i class="mdi mdi-backup-restore"></i>重置</button>
              	<button type="button" onclick="location.href='${ctx }/user/add'" class="btn btn-purple m-r-5"><i class="mdi mdi-plus"></i> 新增</button>
-             	<button type="button" onclick="location.href='${ctx }/user/index'" class="btn btn-success m-r-5"><i class="mdi mdi-check"></i> 启用</button>
-             	<button type="button" onclick="location.href='${ctx }/user/index'" class="btn btn-warning m-r-5"><i class="mdi mdi-block-helper"></i> 禁用</button>
-             	<button type="button" onclick="location.href='${ctx }/user/delete'" class="btn btn-danger"><i class="mdi mdi-window-close"></i> 删除</button>
+             	<button id="batchDelBtn" type="button" class="btn btn-danger"><i class="mdi mdi-window-close"></i> 删除</button>
              </div>
           </form>
         </div>
@@ -113,6 +113,7 @@
         <div class="card-body">
           
           <div class="table-responsive">
+          <form action="delete" method="post" id="tableForm">
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -140,7 +141,7 @@
 	                <tr>
 	                  <td>
 	                    <label class="lyear-checkbox checkbox-primary">
-	                      <input type="checkbox" name="ids[]" value="${user.id }"><span></span>
+	                      <input type="checkbox" name="ids" value="${user.id }"><span></span>
 	                    </label>
 	                  </td>
 	                  <td>${user.id }</td>
@@ -157,13 +158,14 @@
 	                  <td>
 	                    <div class="btn-group">
 	                      <a class="btn btn-xs btn-default" href="edit?id=${user.id }" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
-	                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
+	                      <a class="btn btn-xs btn-default" onclick="deleteUser(${user.id})" href="javascript:;" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
 	                    </div>
 	                  </td>
 	                </tr>
                </c:forEach>
               </tbody>
             </table>
+           </form>
           </div>
           <%@ include file="../page/page_nav.jsp" %>
  
@@ -180,17 +182,73 @@
 <!--日期选择插件-->
 <script src="${ctx }/js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="${ctx }/js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<!--消息提示-->
+<script src="${ctx }/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="${ctx }/js/lightyear.js"></script>
+<!--对话框-->
+<script src="${ctx }/js/jconfirm/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/main.min.js"></script>
 <script type="text/javascript">
-$(function(){
-    $('.search-bar .dropdown-menu a').click(function() {
-        var field = $(this).data('field') || '';
-        $('#search-field').val(field);
-        $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
-    });
-    
+
+/***
+ * 当加载标签时,绑定有点击事件,说明了要执行的方法,系统可以不知道方法什么时间执行,但
+ 系统会校验方法是否存在,此时$(function(){***})函数还没有执行,那么内部编写的方法
+ 也就不会被系统识别,结果只能是点击事件验证方法未找到,所以页面显示方法未定义.
+ 当整个页面加载完毕,$(function(){***})函数才会被执行,但此时点击事件验证的步骤早已执行.
+ */
+ function deleteUser(id) {
+		$.confirm({
+	        title: '警告',
+	        content: '是否删除选中的用户!!',
+	        type: 'orange',
+	        typeAnimated: false,
+	        buttons: {
+	            omg: {
+	                text: '确定删除',
+	                btnClass: 'btn-orange',
+	                action: function(){
+	                	location.href='delete?ids='+id
+	                }
+	            },
+	            close: {
+	                text: '取消',
+	            }
+	        }
+	    });
+	}
+
+$(function(){// 在页面加载完毕后立即执行
+	
+	//批量删除
+	$('#batchDelBtn').click(function() {
+		if($('input[name="ids"]:checked').size() <=0){
+			lightyear.notify('请至少选择一个','warning',3000);
+			return;
+		}
+		
+		$.confirm({
+	        title: '警告',
+	        content: '是否删除选中的用户!!',
+	        type: 'orange',
+	        typeAnimated: false,
+	        buttons: {
+	            omg: {
+	                text: '确定删除',
+	                btnClass: 'btn-orange',
+	                action:function(){
+	                	$('#tableForm').submit();
+	                }
+	            },
+	            close: {
+	                text: '取消',
+	            }
+	        }
+	    });
+		
+	});
+	
+   
   //重置
-    
    	$("#chongzhi").click(function () {
    		$(".form-control").each(function(){
    			$(this).removeAttr("value");

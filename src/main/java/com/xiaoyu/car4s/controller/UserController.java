@@ -66,12 +66,13 @@ public class UserController {
 		
 		
 		List<Dept> deptList = deptService.all();
+		model.addAttribute("depts",deptList);
 		
 		Page<Object> page = PageHelper.startPage(currentPage, pageSize);
 		List<User> list = userService.findByParam(map);
 		model.addAttribute("page",page.toPageInfo());
-		model.addAttribute("depts",deptList);
 		model.addAttribute("users",list);
+		
 		return "user/list";
 	}
 	
@@ -148,6 +149,25 @@ public class UserController {
 		userService.updateUser(user);
 		return "redirect:/user/index";
 	}
+	
+	@RequestMapping("/delete")
+	public String delete(String[] ids) {
+		userService.deleteUser(ids);
+		return "redirect:/user/index";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/ajaxCheckUsername")
 	@ResponseBody

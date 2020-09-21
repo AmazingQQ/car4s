@@ -6,8 +6,8 @@
 	<cache></cache><!-- 开启二级缓存 -->
 	
 	<select id="findByParam" resultType="user" parameterType="map">
-		select * from t_4s_user
-		<where>
+		select * from t_4s_user where del_flag=1
+		
 			<if test="name !=null and name !=''">
 				and name like concat('%',#{name},'%')
 			</if>
@@ -31,11 +31,17 @@
 			<if test="loginFlag !=null and loginFlag !=''">
 				and login_flag=#{loginFlag}
 			</if>
-		
-		</where>
 	</select>
 	
-	
+	<update id="updateDelFlag">
+		update t_4s_user set del_flag=0 where id in
+		<foreach collection="array" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+		
+		
+		
+	</update>
 	
 	
 	
