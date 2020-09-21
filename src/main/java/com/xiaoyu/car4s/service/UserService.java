@@ -19,4 +19,8 @@ public interface UserService {
 
 	void saveUser(User user);
 
+	User findById(Integer id);
+
+	void updateUser(User user);
+
 }

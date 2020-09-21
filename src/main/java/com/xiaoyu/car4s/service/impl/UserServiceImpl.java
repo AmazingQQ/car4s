@@ -53,4 +53,16 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
+	@Override
+	public User findById(Integer id) {
+		User user=userMapper.findById(id);
+		return user;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		userMapper.updateUser(user);
+		
+	}
+
 }

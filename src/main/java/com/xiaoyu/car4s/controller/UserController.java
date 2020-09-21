@@ -127,4 +127,32 @@ public class UserController {
 		return "redirect:/user/index";
 	}
 	
+	
+	@GetMapping("/edit")
+	//@RequestMapping(method = RequestMethod.GET)
+	public String edit(Integer id,Model model) {
+		List<Dept> deptList = deptService.all();
+		model.addAttribute("depts",deptList);
+		
+		List<Role> roleList = roleService.all();
+		model.addAttribute("roles",roleList);
+		
+		User user=userService.findById(id);
+		model.addAttribute("user",user);
+		
+		return "user/edit";
+	}
+	
+	@PostMapping("/edit")
+	public String updateUser(User user) {
+		userService.updateUser(user);
+		return "redirect:/user/index";
+	}
+	
+	@RequestMapping("/ajaxCheckUsername")
+	@ResponseBody
+	public Object ajaxCheckUsername(String username) {
+		User user=userService.findByUsername(username);
+		return user == null;
+	}
 }

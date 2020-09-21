@@ -156,7 +156,7 @@
 	                  <td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd"/></td>
 	                  <td>
 	                    <div class="btn-group">
-	                      <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
+	                      <a class="btn btn-xs btn-default" href="edit?id=${user.id }" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
 	                      <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>
 	                    </div>
 	                  </td>
