@@ -47,4 +47,10 @@ public class UserServiceImpl implements UserService{
 		return userList;
 	}
 
+	@Override
+	public void saveUser(User user) {
+		userMapper.insert(user);
+		
+	}
+
 }

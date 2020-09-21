@@ -17,4 +17,6 @@ public interface UserService {
 
 	List<User> findByParam(Map<String, Object> map);
 
+	void saveUser(User user);
+
 }

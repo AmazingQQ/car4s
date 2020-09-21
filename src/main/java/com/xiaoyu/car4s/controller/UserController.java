@@ -14,15 +14,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.xiaoyu.car4s.entity.Dept;
+import com.xiaoyu.car4s.entity.Role;
 import com.xiaoyu.car4s.entity.User;
 import com.xiaoyu.car4s.service.DeptService;
+import com.xiaoyu.car4s.service.RoleService;
 import com.xiaoyu.car4s.service.UserService;
 
 @Controller
@@ -35,7 +40,8 @@ public class UserController {
 	@Autowired 
 	private DeptService deptService;
 	
-	
+	@Autowired
+	private RoleService roleService;
 	
 	@RequestMapping("/profile")
 	public String profile() {
@@ -59,7 +65,7 @@ public class UserController {
 		map.put("entryDateEnd", entryDateEnd);
 		
 		
-		List<Dept> deptList = deptService.all(1);
+		List<Dept> deptList = deptService.all();
 		
 		Page<Object> page = PageHelper.startPage(currentPage, pageSize);
 		List<User> list = userService.findByParam(map);
@@ -97,4 +103,28 @@ public class UserController {
 		
 		return "redirect:/user/profile";
 	}
+	
+	@GetMapping("/add")
+	//@RequestMapping(method = RequestMethod.GET)
+	public String add(Model model) {
+		List<Dept> deptList = deptService.all();
+		model.addAttribute("depts",deptList);
+		
+		List<Role> roleList = roleService.all();
+		model.addAttribute("roles",roleList);
+		return "user/add";
+	}
+	
+	@PostMapping("/add")
+	public String save(User user) {
+		//补充用户信息
+		user.setPassword("123456");
+		user.setApplyFlag(2);
+		user.setDelFlag(1);
+		
+		userService.saveUser(user);
+		
+		return "redirect:/user/index";
+	}
+	
 }

@@ -25,4 +25,8 @@ public interface UserMapper {
 	void update(User user);
 	
 	List<User> findByParam(Map<String, Object> map);
+	
+	@Insert("insert into t_4s_user(dept_id,name,username,sex,birthday,entry_date,password,login_flag,apply_flag,role_id,del_flag)"
+			+ "values(#{deptId},#{name},#{username},#{sex},#{birthday},#{entryDate},#{password},#{loginFlag},#{applyFlag},#{roleId},#{delFlag})")
+	void insert(User user);
 }

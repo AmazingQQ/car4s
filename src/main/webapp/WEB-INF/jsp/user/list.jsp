@@ -101,10 +101,10 @@
              <div class="form-group col-md-12">
              	<button type="submit" class="btn btn-pink ajax-post"><i class="mdi mdi-magnify"></i>查询</button>
              	<button type="reset" class="btn btn-brown ajax-post" id="chongzhi"><i class="mdi mdi-backup-restore"></i>重置</button>
-             	<button type="button" onclick="location.href='user/add'" class="btn btn-purple m-r-5"><i class="mdi mdi-plus"></i> 新增</button>
-             	<button type="button" onclick="location.href='user/index'" class="btn btn-success m-r-5"><i class="mdi mdi-check"></i> 启用</button>
-             	<button type="button" onclick="location.href='user/index'" class="btn btn-warning m-r-5"><i class="mdi mdi-block-helper"></i> 禁用</button>
-             	<button type="button" onclick="location.href='user/delete'" class="btn btn-danger"><i class="mdi mdi-window-close"></i> 删除</button>
+             	<button type="button" onclick="location.href='${ctx }/user/add'" class="btn btn-purple m-r-5"><i class="mdi mdi-plus"></i> 新增</button>
+             	<button type="button" onclick="location.href='${ctx }/user/index'" class="btn btn-success m-r-5"><i class="mdi mdi-check"></i> 启用</button>
+             	<button type="button" onclick="location.href='${ctx }/user/index'" class="btn btn-warning m-r-5"><i class="mdi mdi-block-helper"></i> 禁用</button>
+             	<button type="button" onclick="location.href='${ctx }/user/delete'" class="btn btn-danger"><i class="mdi mdi-window-close"></i> 删除</button>
              </div>
           </form>
         </div>

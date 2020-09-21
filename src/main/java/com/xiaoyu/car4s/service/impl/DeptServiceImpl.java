@@ -16,8 +16,8 @@ public class DeptServiceImpl implements DeptService{
 	private DeptMapper deptMapper;
 	
 	@Override
-	public List<Dept> all(Integer delFlag) {
-		List<Dept> dept=deptMapper.all(delFlag);
+	public List<Dept> all() {
+		List<Dept> dept=deptMapper.all();
 		return dept;
 	}
 

@@ -111,7 +111,6 @@
 		    $("#inputImage").click();
 	  }
 	  
-	  
 	  var input  = document.getElementById("inputImage");   // 获取上传图片input（file）
 	  input.onchange = function(){// 改变事件
 	      var file = this.files[0];// 获取上传的第一张图片，若希望input实现多文件上传。添加属性multiple="multiple"。
