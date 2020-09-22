@@ -59,6 +59,7 @@
              <div class="form-group col-md-4">
               <label for="type">所属部门</label>
               <div class="form-controls">
+              <my:select name="deptId" id="deptId" data="${deptMap }" css="form-control" firstOption="--部门查询--"/>
               </div>
             </div>
             
@@ -106,7 +107,7 @@
                 </tr>
               </thead>
               <tbody>
-              	<c:forEach items="${users }" var="user">
+              	<c:forEach items="${page.list }" var="user">
 	                <tr>
 	                  <td>
 	                    <label class="lyear-checkbox checkbox-primary">
@@ -116,14 +117,14 @@
 	                  <td>${user.id }</td>
 	                  <td>${user.name }</td>
    	                  <td><my:dict data="${dictMap['SYS_SEX']}" value="${user.sex}"/></td>
-   	                  <td><my:select name="deptId" id="deptId" data="${deptMap }" value="${user.deptId }"/></td>
+   	                  <td><my:dict data="${deptMap }" value="${user.deptId }"/></td>
    	                  
 	                  <td><fmt:formatDate value="${user.birthday }" pattern="yyyy-MM-dd"/></td>
 	                  <td><fmt:formatDate value="${user.entryDate }" pattern="yyyy-MM-dd"/></td>
 	                  <td>${user.username }</td>
 	                  <td><my:dict data="${dictMap['SYS_LOGIN_FLAG']}" value="${user.loginFlag}"/></td>
 	                  <td><my:dict data="${dictMap['APPLY_STATE']}" value="${user.applyFlag}"/></td>
-	                  <td>${user.roleId}</td>
+	                  <td><my:dict data="${roleMap}" value="${user.roleId }"/></td>
 	                  <td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd"/></td>
 	                  <td>
 	                    <div class="btn-group">

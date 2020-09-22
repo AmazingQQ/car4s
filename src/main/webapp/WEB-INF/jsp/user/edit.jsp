@@ -40,19 +40,7 @@
             <div class="form-group col-md-4">
               <label for="roleId">用户角色</label>
               <div class="form-controls">
-                <select name="roleId" class="form-control" id="roleId">
-                  <option value="">--请分配角色--</option>
-                  <c:forEach items="${roles }" var="role">
-                  	<c:choose>
-                  		<c:when test="${role.id == user.roleId }">
-                  			<option value="${role.id }" selected="selected">${role.name }</option>
-                  		</c:when>
-                  		<c:otherwise>
-		                  	<option value="${role.id }">${role.name }</option>
-                  		</c:otherwise>
-                  	</c:choose>
-                  </c:forEach>
-                </select>
+               <my:select name="roleId" id="roleId" css="form-control" data="${roleMap}" value="${user.roleId }"/>
               </div>
             </div>
            

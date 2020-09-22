@@ -23,8 +23,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.xiaoyu.car4s.entity.Dept;
-import com.xiaoyu.car4s.entity.Role;
 import com.xiaoyu.car4s.entity.User;
 import com.xiaoyu.car4s.service.DeptService;
 import com.xiaoyu.car4s.service.RoleService;
@@ -64,14 +62,15 @@ public class UserController {
 		map.put("entryDateStart", entryDateStart);
 		map.put("entryDateEnd", entryDateEnd);
 		
-		
 		Map<String,String> deptmap = deptService.all();
 		model.addAttribute("deptMap",deptmap);
 		
+		Map<String, String> roleMap = roleService.all();
+		model.addAttribute("roleMap",roleMap);
+		
 		Page<Object> page = PageHelper.startPage(currentPage, pageSize);
-		List<User> list = userService.findByParam(map);
+		userService.findByParam(map);
 		model.addAttribute("page",page.toPageInfo());
-		model.addAttribute("users",list);
 		
 		return "user/list";
 	}
@@ -111,8 +110,8 @@ public class UserController {
 		Map<String,String> deptmap = deptService.all();
 		model.addAttribute("deptMap",deptmap);
 		
-		List<Role> roleList = roleService.all();
-		model.addAttribute("roles",roleList);
+		Map<String, String> roleMap = roleService.all();
+		model.addAttribute("roleMap",roleMap);
 		return "user/add";
 	}
 	
@@ -132,11 +131,11 @@ public class UserController {
 	@GetMapping("/edit")
 	//@RequestMapping(method = RequestMethod.GET)
 	public String edit(Integer id,Model model) {
-		Map<String,String> deptmap = deptService.all();
-		model.addAttribute("deptMap",deptmap);
+		Map<String,String> deptMap = deptService.all();
+		model.addAttribute("deptMap",deptMap);
 		
-		List<Role> roleList = roleService.all();
-		model.addAttribute("roles",roleList);
+		Map<String,String> roleMap = roleService.all();
+		model.addAttribute("roleMap",roleMap);
 		
 		User user=userService.findById(id);
 		model.addAttribute("user",user);

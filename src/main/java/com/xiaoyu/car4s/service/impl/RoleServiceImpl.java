@@ -1,6 +1,8 @@
 package com.xiaoyu.car4s.service.impl;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,13 @@ public class RoleServiceImpl implements RoleService{
 	private RoleMapper roleMapper;
 	
 	@Override
-	public List<Role> all() {
-		List<Role> role=roleMapper.all();
-		return role;
+	public Map<String, String> all() {
+		List<Role> list=roleMapper.all();
+		Map<String,String> map=new LinkedHashMap<String, String>();
+		for (Role role : list) {
+			map.put(role.getId().toString(),role.getName());
+		}
+		return map;
 	}
 
 }

@@ -39,12 +39,7 @@
             <div class="form-group col-md-4">
               <label for="roleId">用户角色</label>
               <div class="form-controls">
-                <select name="roleId" class="form-control" id="roleId">
-                  <option value="">--请分配角色--</option>
-                  <c:forEach items="${roles }" var="role">
-                  	<option value="${role.id }">${role.name }</option>
-                  </c:forEach>
-                </select>
+                <my:select name="roleId" id="roleId" css="form-control" data="${roleMap}" firstOption="--用户角色--"/>
               </div>
             </div>
            
