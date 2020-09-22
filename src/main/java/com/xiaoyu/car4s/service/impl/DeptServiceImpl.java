@@ -1,6 +1,8 @@
 package com.xiaoyu.car4s.service.impl;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,13 @@ public class DeptServiceImpl implements DeptService{
 	private DeptMapper deptMapper;
 	
 	@Override
-	public List<Dept> all() {
-		List<Dept> dept=deptMapper.all();
-		return dept;
+	public Map<String, String> all() {
+		List<Dept> list=deptMapper.all();
+		Map<String,String> map=new LinkedHashMap<String, String>();
+		for (Dept dept : list) {
+			map.put(dept.getId().toString(),dept.getName());
+		}
+		return map;
 	}
 
 }

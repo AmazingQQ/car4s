@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -32,13 +33,13 @@
             
             <div class="form-group col-md-4">
               <label for="name">用户姓名</label>
-              <input type="text" class="form-control input-sm" id="name" name="name" placeholder="用户姓名" />
+              <input type="text" class="form-control" id="name" name="name" placeholder="用户姓名" />
             </div>
             
             <div class="form-group col-md-4">
               <label for="roleId">用户角色</label>
               <div class="form-controls">
-                <select name="roleId" class="form-control input-sm" id="roleId">
+                <select name="roleId" class="form-control" id="roleId">
                   <option value="">--请分配角色--</option>
                   <c:forEach items="${roles }" var="role">
                   	<option value="${role.id }">${role.name }</option>
@@ -49,52 +50,39 @@
            
              <div class="form-group col-md-4">
               <label for="birthday">出生日期</label>
-              <input class="form-control js-datepicker m-b-10 input-sm" type="text" id="birthday"
+              <input class="form-control js-datepicker m-b-10" type="text" id="birthday"
               name="birthday" data-date-format="yyyy-mm-dd" placeholder="出生日期" autocomplete="off">
              </div>
             
             <div class="form-group col-md-4">
 	           <label for="username">用户账号</label>
-	           <input type="text" class="form-control input-sm" id="username" name="username" placeholder="用户账号" />
+	           <input type="text" class="form-control" id="username" name="username" placeholder="用户账号" />
            	 </div>
            	 
             <div class="form-group col-md-4">
               <label for="deptId">所属部门</label>
               <div class="form-controls">
-                <select name="deptId" class="form-control input-sm" id="deptId">
-                  <option value="">--请选择部门--</option>
-                  <c:forEach items="${depts }" var="dept">
-                  	<option value="${dept.id }">${dept.name }</option>
-                  </c:forEach>
-                </select>
+                <my:select name="deptId" id="deptId" css="form-control" data="${deptMap}" firstOption="--请选择部门--"/>
               </div>
             </div>
             
             <div class="form-group col-md-4">
               <label for="entryDate">入职日期</label>
-              <input class="form-control js-datepicker m-b-10 input-sm" type="text" id="entryDate"
+              <input class="form-control js-datepicker m-b-10" type="text" id="entryDate"
               name="entryDate" data-date-format="yyyy-mm-dd" placeholder="入职日期" autocomplete="off">
              </div>
               
             <div class="form-group col-md-4">
               <label for="sex">性别</label>
               <div class="form-controls">
-                <select name="sex" class="form-control input-sm" id="sex">
-                  <option value="">--请选择性别--</option>
-                  <option value="1">男</option>
-                  <option value="2">女</option>
-                </select>
+                <my:select name="sex" id="sex" css="form-control" data="${dictMap['SYS_SEX']}" firstOption="--请选择性别--"/>
               </div>
             </div>
             
             <div class="form-group col-md-4">
               <label for="loginFlag">登录状态</label>
               <div class="form-controls">
-                <select name="loginFlag" class="form-control input-sm" id="loginFlag">
-                  <option value="">--请选择登录状态--</option>
-                  <option value="1">正常</option>
-                  <option value="2">冻结</option>
-                </select>
+                <my:select name="loginFlag" id="loginFlag" css="form-control" data="${dictMap['SYS_LOGIN_FLAG']}"/>
               </div>
             </div>
 

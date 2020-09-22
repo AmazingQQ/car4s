@@ -1,0 +1,57 @@
+ <taglib>
+     <tlib-version>1.0</tlib-version>
+     <jsp-version>2.0</jsp-version>
+     <short-name>My Tags</short-name>
+     
+     <tag>
+       <name>dict</name>
+       <tag-class>com.xiaoyu.car4s.utils.tags.dictTag</tag-class>
+       <body-content>empty</body-content>
+       <attribute>
+	       	<name>value</name>
+	       	<type>java.lang.String</type> <!-- String类型可以省略 -->
+	       	<required>true</required>  <!-- 是否必填 -->
+	       	<rtexprvalue>true</rtexprvalue>   <!-- 是否支持EL表达式 -->
+       </attribute>
+       <attribute>
+	       	<name>data</name>
+	       	<type>java.lang.String</type> <!-- String类型可以省略 -->
+	       	<required>true</required>  <!-- 是否必填 -->
+	       	<rtexprvalue>true</rtexprvalue>   <!-- 是否支持EL表达式 -->
+       </attribute>
+     </tag>
+     
+      <tag>
+  	<name>select</name>
+    <tag-class>com.xiaoyu.car4s.utils.tags.SelectTag</tag-class>
+  	<body-content>empty</body-content>
+  	<attribute>
+       <name>data</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue>
+       <type>java.util.Map</type>
+    </attribute>
+    <attribute>
+       <name>name</name>
+       <required>true</required>
+       <rtexprvalue>true</rtexprvalue> 
+    </attribute>
+    <attribute>
+       <name>value</name>
+       <rtexprvalue>true</rtexprvalue> 
+    </attribute>
+    <attribute>
+       <name>css</name>
+       <rtexprvalue>true</rtexprvalue> 
+    </attribute>
+    <attribute>
+       <name>id</name>
+       <rtexprvalue>true</rtexprvalue> 
+    </attribute>
+    <attribute>
+       <name>firstOption</name>
+       <rtexprvalue>true</rtexprvalue> 
+    </attribute>
+  </tag>
+     
+   </taglib> 

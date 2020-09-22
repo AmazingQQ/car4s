@@ -65,8 +65,8 @@ public class UserController {
 		map.put("entryDateEnd", entryDateEnd);
 		
 		
-		List<Dept> deptList = deptService.all();
-		model.addAttribute("depts",deptList);
+		Map<String,String> deptmap = deptService.all();
+		model.addAttribute("deptMap",deptmap);
 		
 		Page<Object> page = PageHelper.startPage(currentPage, pageSize);
 		List<User> list = userService.findByParam(map);
@@ -108,8 +108,8 @@ public class UserController {
 	@GetMapping("/add")
 	//@RequestMapping(method = RequestMethod.GET)
 	public String add(Model model) {
-		List<Dept> deptList = deptService.all();
-		model.addAttribute("depts",deptList);
+		Map<String,String> deptmap = deptService.all();
+		model.addAttribute("deptMap",deptmap);
 		
 		List<Role> roleList = roleService.all();
 		model.addAttribute("roles",roleList);
@@ -132,8 +132,8 @@ public class UserController {
 	@GetMapping("/edit")
 	//@RequestMapping(method = RequestMethod.GET)
 	public String edit(Integer id,Model model) {
-		List<Dept> deptList = deptService.all();
-		model.addAttribute("depts",deptList);
+		Map<String,String> deptmap = deptService.all();
+		model.addAttribute("deptMap",deptmap);
 		
 		List<Role> roleList = roleService.all();
 		model.addAttribute("roles",roleList);

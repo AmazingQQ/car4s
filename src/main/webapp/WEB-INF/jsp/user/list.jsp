@@ -3,6 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -58,45 +59,13 @@
              <div class="form-group col-md-4">
               <label for="type">所属部门</label>
               <div class="form-controls">
-                <select name="deptId" class="form-control" id="deptId">
-                	<option value="">--请选择--</option>
-                	<c:forEach items="${depts }" var="dept">
-                		<c:choose>
-						 	<c:when test="${param.deptId == dept.id }">
-                 		 		<option value="${dept.id }" selected>${dept.name }</option>
-						 	</c:when>
-						 	<c:otherwise>
-                 		 		<option value="${dept.id }">${dept.name }</option>
-						 	</c:otherwise>
-						 </c:choose>
-                	</c:forEach>
-                </select>
               </div>
             </div>
             
               <div class="form-group col-md-4">
               <label for="loginFlag">登录状态</label>
               <div class="form-controls">
-              <select name="loginFlag" class="form-control" >
-              	<option value="">--请选择--</option>
-              	<c:choose>
-				 	<c:when test="${param.loginFlag == 1 }">
-               		 		<option value="1" selected>--正常--</option>
-				 	</c:when>
-				 	<c:otherwise>
-               		 		<option value="1">--正常--</option>
-				 	</c:otherwise>
-				 </c:choose>
-				 
-              	<c:choose>
-				 	<c:when test="${param.loginFlag == 2 }">
-               		 		<option value="2" selected>--冻结--</option>
-				 	</c:when>
-				 	<c:otherwise>
-               		 		<option value="2">--冻结--</option>
-				 	</c:otherwise>
-				 </c:choose>
-              </select>
+	            <my:select name="loginFlag" id="loginFlag" css="form-control" data="${dictMap['SYS_LOGIN_FLAG']}" firstOption="--请选择登录状态--"/>
               </div>
              </div>
              
@@ -146,13 +115,14 @@
 	                  </td>
 	                  <td>${user.id }</td>
 	                  <td>${user.name }</td>
-	                  <td>${user.sex }</td>
-	                  <td>${user.deptId }</td>
+   	                  <td><my:dict data="${dictMap['SYS_SEX']}" value="${user.sex}"/></td>
+   	                  <td><my:select name="deptId" id="deptId" data="${deptMap }" value="${user.deptId }"/></td>
+   	                  
 	                  <td><fmt:formatDate value="${user.birthday }" pattern="yyyy-MM-dd"/></td>
 	                  <td><fmt:formatDate value="${user.entryDate }" pattern="yyyy-MM-dd"/></td>
 	                  <td>${user.username }</td>
-	                  <td>${user.loginFlag}</td>
-	                  <td>${user.applyFlag}</td>
+	                  <td><my:dict data="${dictMap['SYS_LOGIN_FLAG']}" value="${user.loginFlag}"/></td>
+	                  <td><my:dict data="${dictMap['APPLY_STATE']}" value="${user.applyFlag}"/></td>
 	                  <td>${user.roleId}</td>
 	                  <td><fmt:formatDate value="${user.createDate }" pattern="yyyy-MM-dd"/></td>
 	                  <td>

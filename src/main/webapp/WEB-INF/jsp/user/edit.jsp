@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -68,18 +70,7 @@
             <div class="form-group col-md-4">
               <label for="deptId">所属部门</label>
               <div class="form-controls">
-                <select name="deptId" class="form-control" id="deptId">
-                  <c:forEach items="${depts }" var="dept">
-                  	<c:choose>
-                  		<c:when test="${dept.id == user.deptId}">
-		                  	<option value="${dept.id }" selected="selected">${dept.name }</option>
-                  		</c:when>
-                  		<c:otherwise>
-                  			<option value="${dept.id }">${dept.name }</option>
-                  		</c:otherwise>
-                  	</c:choose>
-                  </c:forEach>
-                </select>
+                <my:select name="deptId" id="deptId" css="form-control" data="${deptMap}" value="${user.deptId }"/>
               </div>
             </div>
             
@@ -92,30 +83,21 @@
             <div class="form-group col-md-4">
               <label for="sex">性别</label>
               <div class="form-controls">
-                <select name="sex" class="form-control input-sm" id="sex">
-                  <option value="1">男</option>
-                  <option value="2">女</option>
-                </select>
+                <my:select name="sex" id="sex" css="form-control" data="${dictMap['SYS_SEX']}" value="${user.sex}"/>
               </div>
             </div>
             
             <div class="form-group col-md-4">
               <label for="loginFlag">登录状态</label>
               <div class="form-controls">
-                <select name="loginFlag" class="form-control input-sm" id="loginFlag">
-                  <option value="1">正常</option>
-                  <option value="2">冻结</option>
-                </select>
+                <my:select name="loginFlag" id="loginFlag" css="form-control" data="${dictMap['SYS_LOGIN_FLAG']}" value="${user.loginFlag}"/>
               </div>
             </div>
             
             <div class="form-group col-md-4">
               <label for="applyFlag">申请状态</label>
               <div class="form-controls">
-                <select name="applyFlag" class="form-control input-sm" id="applyFlag">
-                  <option value="1">申请中</option>
-                  <option value="2">通过</option>
-                </select>
+                <my:select name="applyFlag" id="applyFlag" css="form-control" data="${dictMap['APPLY_STATE']}" value="${user.applyFlag}"/>
               </div>
             </div>
 

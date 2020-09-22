@@ -1,11 +1,9 @@
 package com.xiaoyu.car4s.service;
 
-import java.util.List;
+import java.util.Map;
 
-
-import com.xiaoyu.car4s.entity.Dept;
 
 public interface DeptService {
 	
-	List<Dept> all();
+	Map<String, String> all();
 }
