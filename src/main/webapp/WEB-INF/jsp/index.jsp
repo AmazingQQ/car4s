@@ -39,6 +39,7 @@
               <a href="javascript:void(0)"><i class="mdi mdi-sticker-emoji"></i> <span>系统管理</span></a>
               <ul class="nav nav-subnav">
                 <li> <a class="multitabs" href="user/index">用户管理</a> </li>
+                <li> <a class="multitabs" href="role/index">角色管理</a> </li>
               </ul>
             </li>
           </ul>

@@ -27,4 +27,39 @@ public class RoleServiceImpl implements RoleService{
 		return map;
 	}
 
+
+
+	@Override
+	public List<Role> roleAll(Map<String, Object> map) {
+		return roleMapper.roleAll(map);
+	}
+
+
+
+	@Override
+	public void saveRole(Role role) {
+		roleMapper.save(role);
+	}
+
+
+
+	@Override
+	public Role findById(Integer id) {
+		return roleMapper.findRole(id);
+	}
+
+
+
+	@Override
+	public void updateRole(Role role) {
+		roleMapper.update(role);
+	}
+
+
+
+	@Override
+	public void delete(String[] ids) {
+		roleMapper.deleteRole(ids);
+	}
+
 }

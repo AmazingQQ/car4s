@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoyu.car4s.mapper.UserMapper"><!-- 权限定名 -->
-	<cache></cache><!-- 开启二级缓存 -->
+	<!-- <cache></cache> --><!-- 开启二级缓存 -->
 	
 	<select id="findByParam" resultType="user" parameterType="map">
 		select * from t_4s_user where del_flag=1
@@ -38,9 +38,6 @@
 		<foreach collection="array" item="id" open="(" separator="," close=")">
 			#{id}
 		</foreach>
-		
-		
-		
 	</update>
 	
 	
