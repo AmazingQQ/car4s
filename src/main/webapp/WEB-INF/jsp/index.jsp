@@ -40,6 +40,7 @@
               <ul class="nav nav-subnav">
                 <li> <a class="multitabs" href="user/index">用户管理</a> </li>
                 <li> <a class="multitabs" href="role/index">角色管理</a> </li>
+                <li> <a class="multitabs" href="menu/index">菜单管理</a> </li>
               </ul>
             </li>
           </ul>

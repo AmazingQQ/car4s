@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>新增文档 - 光年(Light Year Admin)后台管理系统模板</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
@@ -30,7 +30,7 @@
       <div class="card">
         <div class="card-body">
           
-          <form action="add" method="post" class="row">
+          <form action="save" method="post" class="row">
           
             <div class="form-group col-md-4">
               <label for="name">菜单名称（必填）</label>
@@ -38,24 +38,24 @@
             </div>
             
             <div class="form-group col-md-4">
-              <label for="url">链接路径（必填）</label>
+              <label for="url">URL（必填）</label>
               <input type="text" class="form-control" id="url" name="url" value="" placeholder="请输入链接路径" />
             </div>
           
           	<div class="form-group col-md-4">
               <label for="parentId">父菜单（必填）</label>
-              <input type="text" class="form-control" id="parentId" name="parentId" value="" placeholder="请填写父菜单名称" />
+             <my:select name="parentId" id="parentId" data="${menuMap}" css="form-control" firstOption="--选择父级菜单--"/>
             </div>
             
             <div class="form-group col-md-4">
-              <label for="mlevel">级别(1-一级,2-二级,3-权限级)</label>
+              <label for="mlevel">菜单级别</label>
               <div class="form-controls">
-                <my:select name="mlevel" id="mlevel" css="form-control" data="${dictMap['SYS_MENU_LEVEL'] }" firstOption="--请选择级别-"/>
+                <my:select name="mlevel" id="mlevel" css="form-control" data="${dictMap['SYS_MENU_LEVEL'] }" firstOption="--请选择级别--"/>
               </div>
             </div>
             
             <div class="form-group col-md-4">
-              <label for="useFlag">可用标志（必填）</label>
+              <label for="useFlag">可用标签（必填）</label>
               <div class="form-controls">
                 <my:select name="useFlag" css="form-control" id="useFlag" data="${dictMap['SYS_USE_FLAG'] }" firstOption="--是否可用--"/>
               </div>

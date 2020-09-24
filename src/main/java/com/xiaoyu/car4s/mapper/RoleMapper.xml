@@ -8,7 +8,7 @@
 	<select id="roleAll" parameterType="map" resultType="role">
 		select * from t_4s_role where del_flag=1
 			<if test="name !=null and name !=''">
-				and name=#{name} 
+				and name like concat ('%',#{name},'%')
 			</if>
 	</select>
 	

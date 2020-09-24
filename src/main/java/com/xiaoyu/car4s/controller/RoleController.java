@@ -18,7 +18,7 @@ import com.xiaoyu.car4s.entity.Role;
 import com.xiaoyu.car4s.service.RoleService;
 
 @Controller
-@RequestMapping("role")
+@RequestMapping("/role")
 public class RoleController {
 	
 	@Autowired 
@@ -36,32 +36,32 @@ public class RoleController {
 		return "role/list";
 	}
 	
-	@RequestMapping("add")
+	@RequestMapping("/add")
 	public String add() {
 		return "role/add";
 	}
 	
-	@RequestMapping("save")
+	@RequestMapping("/save")
 	public String saveRole(Role role) {
 		role.setDelFlag(1);
 		roleService.saveRole(role);
 		return "redirect:/role/index";
 	}
 	
-	@GetMapping("edit")
+	@GetMapping("/edit")
 	public String editRole(Model model,Integer id) {
 		Role role = roleService.findById(id);
 		model.addAttribute("role",role);
 		return "role/edit";
 	}
 	
-	@PostMapping("edit")
+	@PostMapping("/edit")
 	public String saveUpdate(Role role) {
 		roleService.updateRole(role);
 		return "redirect:/role/index";
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("/delete")
 	public String delRole(String[] ids) {
 		roleService.delete(ids);
 		return "redirect:/role/index";

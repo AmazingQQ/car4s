@@ -57,16 +57,16 @@
             
              
              <div class="form-group col-md-4">
-              <label for="type">所属部门</label>
+              <label for="deptId">所属部门</label>
               <div class="form-controls">
-              <my:select name="deptId" id="deptId" data="${deptMap }" css="form-control" firstOption="--部门查询--"/>
+              <my:select name="deptId" id="deptId" value="${param.deptId }" data="${deptMap }" css="form-control" firstOption="--部门查询--"/>
               </div>
             </div>
             
               <div class="form-group col-md-4">
               <label for="loginFlag">登录状态</label>
               <div class="form-controls">
-	            <my:select name="loginFlag" id="loginFlag" css="form-control" data="${dictMap['SYS_LOGIN_FLAG']}" firstOption="--请选择登录状态--"/>
+	            <my:select name="loginFlag" id="loginFlag" css="form-control" value="${param.loginFlag }" data="${dictMap['SYS_LOGIN_FLAG']}" firstOption="--请选择登录状态--"/>
               </div>
              </div>
              
@@ -223,7 +223,8 @@ $(function(){// 在页面加载完毕后立即执行
    	$("#chongzhi").click(function () {
    		$(".form-control").each(function(){
    			$(this).removeAttr("value");
-   		})
+   		});
+   		$(".form-control").children().removeAttr("selected");
    	});
     
 });

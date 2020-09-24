@@ -34,7 +34,7 @@ public interface UserMapper {
 	User findById(Integer id);
 	
 	@Update("update t_4s_user set name=#{name},dept_id=#{deptId},sex=#{sex},birthday=#{birthday},entry_date=#{entryDate},"
-			+ "login_flag=#{loginFlag},apply_flag=#{applyFlag},role_id=#{roleId} where id=${id}")
+			+ "login_flag=#{loginFlag},apply_flag=#{applyFlag},role_id=#{roleId} where id=#{id}")
 	void updateUser(User user);
 
 	void updateDelFlag(String[] ids);

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>新增文档 - 光年(Light Year Admin)后台管理系统模板</title>
@@ -34,7 +34,7 @@
 				<div class="card">
 					<div class="card-body">
 
-			<form action="update" method="post" class="row">
+			<form action="edit" method="post" class="row">
 				<input type="hidden" name="id" value="${menu.id }">
 				<div class="form-group col-md-4">
 					<label for="name">菜单名称（必填）</label> 
@@ -48,11 +48,11 @@
 
 				<div class="form-group col-md-4">
 					<label for="parentId">父菜单（必填）</label> 
-					<input type="text" class="form-control" id="parentId" name="parentId" value="${menu.parentId }" />
+              		<my:select name="parentId" id="parentId" data="${menuMap}" css="form-control selectOp" value="${menu.parentId }"/>
 				</div>
 
 				<div class="form-group col-md-4">
-					<label for="mlevel">级别(1-一级,2-二级,3-权限)（必填）</label>
+					<label for="mlevel">级别（必填）</label>
 					<div class="form-controls">
 						<my:select name="mlevel" css="form-control" id="mlevel" data="${dictMap['SYS_MENU_LEVEL'] }" value="${menu.mlevel }" />
 					</div>

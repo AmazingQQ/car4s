@@ -41,7 +41,7 @@
             </div>
             <div class="form-group col-md-4">
               <label for="name">职位名称查询</label>
-              <input type="text" class="form-control" id="name" name="name" value="" placeholder="请输入名称">
+              <input type="text" class="form-control" id="name" name="name" value="${param.name }" placeholder="请输入名称">
             </div>
           </form>
         </div>
