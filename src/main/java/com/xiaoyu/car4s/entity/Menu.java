@@ -14,6 +14,7 @@ public class Menu implements Serializable{
 	private Integer id;//菜单ID(PK)
 	private String name;//菜单名称
 	private String url;//链接路径
+	private String icon;//图标
 	private Integer parentId;//父菜单
 	private Integer mlevel;//级别(1-一级,2-二级,3-权限)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

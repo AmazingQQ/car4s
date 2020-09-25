@@ -22,5 +22,7 @@ public interface MenuService {
 	List<Menu> findUndelMenu();
 
 	List<Menu> findRootMenu4Assgin(Integer roleId);
+
+	List<Menu> findSideMenuByUserId(Integer userId);
 	
 }

@@ -34,7 +34,29 @@
         
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a class="multitabs" href="main"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
+          <c:forEach items="${sideMenu }" var="menu">
+          	<c:choose>
+          		<c:when test="${empty menu.children }">
+	          		<li class="nav-item active"><a class="multitabs" href="${ctx }/${menu.url}"><i class=" mdi ${menu.icon}"></i> <span>${menu.name }</span></a> </li>
+          		</c:when>
+          		<c:otherwise>
+        			<li class="nav-item nav-item-has-subnav">
+              		<a href="javascript:void(0)"><i class="mdi ${menu.icon}"></i> <span>${menu.name }</span></a>
+	              	<ul class="nav nav-subnav">
+	              		<c:forEach items="${menu.children }" var="child">
+		                	<li> <a class="multitabs" href="${ctx }/${child.url}">${child.name }</a> </li>
+		                </c:forEach>
+	              	</ul>
+            		</li>
+          		</c:otherwise>
+          	</c:choose>
+          	
+          </c:forEach>
+          
+          
+          
+          
+            <!-- <li class="nav-item active"> <a class="multitabs" href="main"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-sticker-emoji"></i> <span>系统管理</span></a>
               <ul class="nav nav-subnav">
@@ -42,7 +64,7 @@
                 <li> <a class="multitabs" href="role/index">角色管理</a> </li>
                 <li> <a class="multitabs" href="menu/index">菜单管理</a> </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </nav>
         

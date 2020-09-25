@@ -25,9 +25,14 @@ public interface MenuMapper {
 	
 	void deleteMenu(String[] ids);
 	
-	@Select("select * from t_4s_menu")
+	@Select("select * from t_4s_menu ")
 	List<Menu> menuParent();
 	
 	@Select("select menu_id from t_4s_role2menu where role_id=#{roleId}")
 	List<Integer> findAssignedMenuByRoleId(Integer roleId);
+	
+	@Select("select * from t_4s_menu where use_flag=1 and del_flag=1 and mlevel in(1,2)"
+			+ "and id in(select menu_id from t_4s_role2menu where role_id="
+			+ "(select role_id from t_4s_user where id=#{userId}))")
+	List<Menu> selectSideMenuByUserId(Integer userId);
 }
