@@ -1,7 +1,9 @@
 package com.xiaoyu.car4s.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,4 +20,15 @@ public class Menu implements Serializable{
 	private Date createDate;//创建日期
 	private Integer useFlag;//可用标志(1-可用, 2-不可用)
 	private Integer delFlag;//删除标志(1-未删,0-已删)
+	
+	private List<Menu> children;//存放该节点的子节点
+	private boolean open=true;//默认展开状态
+	private boolean checked;//默认是否勾选上
+	
+	public void addChild(Menu child) {
+		if (children == null) {
+			children=new ArrayList<Menu>();
+		}
+		children.add(child);
+	}
 }

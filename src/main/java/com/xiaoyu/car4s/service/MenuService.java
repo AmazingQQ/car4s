@@ -18,5 +18,9 @@ public interface MenuService {
 	void updateMenu(Menu menu);
 
 	Map<String, String> findParntId();
+
+	List<Menu> findUndelMenu();
+
+	List<Menu> findRootMenu4Assgin(Integer roleId);
 	
 }

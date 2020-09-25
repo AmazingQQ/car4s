@@ -33,23 +33,23 @@
     <div class="col-lg-12">
       <div class="card">
        <div class="card-header">
-       		<h3>正在给“${assi.name }”分配菜单</h3>
+       		<h3>正在给“${role.name }”分配菜单</h3>
        </div>
       
         <div class="card-toolbar clearfix">
           <form id="f1" class="row" method="post" action="list" role="form">
             <div class="form-group col-md-12">
-              <button type="button" class="btn btn-primary" href="javascript:;" onclick="checkAll();"><i class="mdi mdi-playlist-plus"></i> 全选</button>
-              <button type="button" class="btn btn-danger" href="javascript:;" onclick="uncheckAll();"><i class="mdi mdi-playlist-remove"></i> 全不选</button>
-              <button type="button" class="btn btn-success" href="javascript:;" onclick="doAssign();"><i class="mdi mdi-playlist-check"></i> 确认</button>
-              <button type="button" class="btn btn-default" href="javascript:;" onclick="javascript:history.back(-1);return false;"><i class="mdi mdi-playlist-minus"></i> 取消</button>
+              <a class="btn btn-primary" href="javascript:;" onclick="checkAll();"><i class="mdi mdi-playlist-plus"></i> 全选</a>
+              <a class="btn btn-danger" href="javascript:;" onclick="uncheckAll();"><i class="mdi mdi-playlist-remove"></i> 全不选</a>
+              <a class="btn btn-success" href="javascript:;" onclick="doAssign();"><i class="mdi mdi-playlist-check"></i> 确认</a>
+              <a class="btn btn-default" href="javascript:;" onclick="javascript:history.back(-1);return false;"><i class="mdi mdi-playlist-minus"></i> 取消</a>
             </div>
           </form>
         </div>
         <div class="card-body">
           <ul id="treeDemo" class="ztree"></ul>
         </div>
-      </div>
+      </div> 
     </div>
     
   </div>
@@ -79,7 +79,7 @@
 		},
 		async : {
 			enable : true,
-			url : "${ctx}/role/loadMenu?roleId=${assi.id}",
+			url : "${ctx}/role/loadMenu?roleId=${role.id}",
 			autoParam : []
 		}
 	};
@@ -97,7 +97,8 @@
 		if (nodes.length == 0) {
 			lightyear.notify("请至少选择一个菜单！", 'danger');
 		} else {
-			var data = "roleId=${assi.id}";
+			//拼装roleId和menuId参数
+			var data = "roleId=${role.id}";
 			$.each(nodes, function(i, node) {
 				//console.log(node.id);
 				data += "&menuIds=" + node.id;
@@ -109,7 +110,7 @@
 				url : '${ctx}/role/doAssign',
 				data : data,
 				beforeSend : function() {
-					lightyear.loading('show');
+					lightyear.loading('show');//显示一下等待图标示
 				},
 				success : function(result) {
 					lightyear.loading('hide');

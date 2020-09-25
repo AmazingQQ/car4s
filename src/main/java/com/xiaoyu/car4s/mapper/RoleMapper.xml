@@ -19,8 +19,11 @@
 		</foreach>
 	</update>	
 		
-		
-
-	
+	<insert id="insertRoleMenus">	
+		insert into t_4s_role2menu(role_id,menu_id) values
+		<foreach collection="menuIds" item="menuId" separator=",">
+			(#{roleId},#{menuId})
+		</foreach>
+	</insert>
 	
 </mapper>

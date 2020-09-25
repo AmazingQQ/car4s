@@ -19,4 +19,6 @@ public interface RoleService {
 
 	void delete(String[] ids);
 
+	void assignMenuRole(Integer roleId, Integer[] menuIds);
+
  }

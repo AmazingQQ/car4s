@@ -3,7 +3,9 @@ package com.xiaoyu.car4s.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -28,4 +30,10 @@ public interface RoleMapper {
 
 	
 	void deleteRole(String[] ids);
+
+	@Delete("delete from t_4s_role2menu where role_id=#{roleId}")
+	void deleteRoleMenus(Integer roleId);
+
+	
+	void insertRoleMenus(@Param("roleId") Integer roleId,@Param("menuIds") Integer[] menuIds);
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.xiaoyu.car4s.entity.Role;
 import com.xiaoyu.car4s.mapper.RoleMapper;
@@ -60,6 +61,16 @@ public class RoleServiceImpl implements RoleService{
 	@Override
 	public void delete(String[] ids) {
 		roleMapper.deleteRole(ids);
+	}
+
+
+
+	@Override
+	@Transactional
+	public void assignMenuRole(Integer roleId, Integer[] menuIds) {
+		roleMapper.deleteRoleMenus(roleId);//删除该Role已分配所有菜单
+		roleMapper.insertRoleMenus(roleId,menuIds);//按新分配的菜单插入到数据库
+		
 	}
 
 }

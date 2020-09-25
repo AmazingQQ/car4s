@@ -2,6 +2,7 @@ package com.xiaoyu.car4s.controller;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.xiaoyu.car4s.entity.AjaxResult;
+import com.xiaoyu.car4s.entity.Menu;
 import com.xiaoyu.car4s.entity.Role;
+import com.xiaoyu.car4s.service.MenuService;
 import com.xiaoyu.car4s.service.RoleService;
 
 @Controller
@@ -23,6 +28,9 @@ public class RoleController {
 	
 	@Autowired 
 	private RoleService roleService;
+	
+	@Autowired
+	private MenuService menuService;
 	
 	@RequestMapping("/index")
 	public String haiHello(Model model,String name,
@@ -66,4 +74,35 @@ public class RoleController {
 		roleService.delete(ids);
 		return "redirect:/role/index";
 	}
+	
+	@RequestMapping("/assign")
+	public String assign(Integer id,Model model) {
+		Role role = roleService.findById(id);
+		model.addAttribute("role",role);
+		return "role/assign";
+	}
+	
+	@RequestMapping("/loadMenu")
+	@ResponseBody
+	public Object loadMenu(Integer roleId) {
+//		List<Menu> list=menuService.findUndelMenu();
+		List<Menu> list=menuService.findRootMenu4Assgin(roleId);
+		return list;
+	}
+	
+	@RequestMapping("/doAssign")
+	@ResponseBody
+	public Object doAssign(Integer roleId,Integer[] menuIds) {
+		AjaxResult result = new AjaxResult();
+		try {
+			roleService.assignMenuRole(roleId,menuIds);
+			result.setSuccess(true);
+		}catch (Exception e) {
+			e.printStackTrace();
+			result.setSuccess(false);
+		}
+		return result;
+	}
+	
+	
 }
