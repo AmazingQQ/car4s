@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoyu.car4s.mapper.ReportMapper"><!-- 权限定名 -->
+	<!-- <cache></cache> --><!-- 开启二级缓存 -->
+	
+	<select id="selectSaleData" resultType="map">
+		select concat(year(sell_date),'-',month(sell_date)) ym,
+		sum(total) total
+		from t_car4s_sellorder
+		where sell_date &gt;= #{sd}
+		and sell_date &lt; #{ed}
+		group by concat(year(sell_date),'-',month(sell_date))
+		order by year(sell_date),month(sell_date)
+	</select>
+	
+	
+	
+</mapper>

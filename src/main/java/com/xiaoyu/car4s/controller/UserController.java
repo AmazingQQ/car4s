@@ -4,7 +4,6 @@ package com.xiaoyu.car4s.controller;
 import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -154,18 +153,6 @@ public class UserController {
 		userService.deleteUser(ids);
 		return "redirect:/user/index";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@RequestMapping("/ajaxCheckUsername")
