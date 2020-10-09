@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoyu.car4s.mapper.MenuMapper"><!-- 权限定名 -->
-	<!-- <cache></cache> --><!-- 开启二级缓存 -->
+	<!-- 开启二级缓存 -->
+	<!-- <cache type="com.xiaoyu.car4s.utils.RedisCache"></cache> -->
 	
 	<select id="menuAll" parameterType="map" resultType="menu">
 		select * from t_4s_menu where del_flag=1

@@ -3,12 +3,15 @@ package com.xiaoyu.car4s.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.xiaoyu.car4s.entity.Menu;
+import com.xiaoyu.car4s.utils.RedisCache;
 
+@CacheNamespace(implementation = RedisCache.class)
 public interface MenuMapper {
 
 	List<Menu> menuAll(Map<String, Object> map);

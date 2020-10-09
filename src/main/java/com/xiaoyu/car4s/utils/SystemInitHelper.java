@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
@@ -41,7 +42,11 @@ public class SystemInitHelper implements InitializingBean,ServletContextAware{
 		this.servletContext=servletContext;
 		
 	}
-
 	
+	
+	@Autowired
+	public void setRedisTemplate(RedisTemplate<String,Object> redisTemplate) {
+		RedisCache.setRedisTemplate(redisTemplate);
+	}
 
 }

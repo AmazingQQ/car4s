@@ -3,7 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoyu.car4s.mapper.ReportMapper"><!-- 权限定名 -->
-	<!-- <cache></cache> --><!-- 开启二级缓存 -->
+	<!-- 开启二级缓存 -->
+	<!-- <cache type="com.xiaoyu.car4s.utils.RedisCache"></cache> -->
 	
 	<select id="selectSaleData" resultType="map">
 		select concat(year(sell_date),'-',month(sell_date)) ym,

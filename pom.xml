@@ -141,8 +141,43 @@
 		    <version>2.10.0</version>
 		</dependency>
 
-
-  		
+	<dependency>
+	    <groupId>org.quartz-scheduler</groupId>
+	    <artifactId>quartz</artifactId>
+	    <version>2.3.1</version>
+	</dependency>
+	<!-- Spring对Quartz的整合支持在spring-context-support包中 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>javax.mail</groupId>
+		<artifactId>mail</artifactId>
+		<version> 1.4.7</version>
+	</dependency>  		
+	  		
+	 <!-- redis -->
+	<dependency>
+	    <groupId>redis.clients</groupId>
+	    <artifactId>jedis</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework.data</groupId>
+	    <artifactId>spring-data-redis</artifactId>
+	    <version>1.6.2.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-ehcache</artifactId>
+	    <version>1.0.0</version>
+	</dependency> 		
+	  		
   	</dependencies>
   	
   	

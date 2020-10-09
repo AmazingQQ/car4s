@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 具体任务类 -->
+	<bean id="helloJob" class="com.xiaoyu.car4s.task.HelloJob" />
+	
+	<!-- 定义一个任务，指明是调用哪个类的哪个方法 -->
+	<bean id="taskHelloJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="helloJob"></property>
+		<property name="targetMethod" value="sayHelloEveryMin"></property>
+	</bean>
+	
+	<!-- 定义任务执行的触发时间 -->
+	<bean id="helloJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="taskHelloJob"></property>
+		<!-- cron表达式 -->
+		<property name="cronExpression" value="0 * * * * ?"></property>
+	</bean>
+	
+	
+	<!-- 定时任务总管类 -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- 加入定时调度任务 -->
+				<ref bean="helloJobTrigger"/>
+			</list>		
+		</property>
+	</bean>
+
+</beans>

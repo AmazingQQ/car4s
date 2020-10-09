@@ -3,14 +3,16 @@ package com.xiaoyu.car4s.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.xiaoyu.car4s.entity.User;
+import com.xiaoyu.car4s.utils.RedisCache;
 
+@CacheNamespace(implementation = RedisCache.class)
 public interface UserMapper {
-	
 	
 	@Select("select * from t_4s_user")
 	List<User> all();

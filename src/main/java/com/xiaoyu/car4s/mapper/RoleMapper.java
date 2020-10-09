@@ -3,6 +3,7 @@ package com.xiaoyu.car4s.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -10,7 +11,9 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.xiaoyu.car4s.entity.Role;
+import com.xiaoyu.car4s.utils.RedisCache;
 
+@CacheNamespace(implementation = RedisCache.class)
 public interface RoleMapper {
 	
 	@Select("select * from t_4s_role where del_flag=1")

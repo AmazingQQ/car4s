@@ -5,6 +5,7 @@
         xmlns:aop="http://www.springframework.org/schema/aop"
         xmlns:tx="http://www.springframework.org/schema/tx"
         xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:task="http://www.springframework.org/schema/task"
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
@@ -14,7 +15,9 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task.xsd ">
 
         <!-- 组件扫描 -->
        <context:component-scan base-package="com.xiaoyu"></context:component-scan>
@@ -79,6 +82,9 @@
    		<!-- 事物配置结束 -->
    		
    		
+   		<!-- 启用定时任务注解 -->
+   		<task:annotation-driven/>
    		
-   		
+   		<!-- 导入mail的配置 -->
+   		<import resource="classpath*:spring-redis.xml" />
 </beans>
