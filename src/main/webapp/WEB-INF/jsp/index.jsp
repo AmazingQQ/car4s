@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 
 <!DOCTYPE html>
@@ -34,14 +35,19 @@
         
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
+          
           <c:forEach items="${sideMenu }" var="menu">
           	<c:choose>
           		<c:when test="${empty menu.children }">
-	          		<li class="nav-item active"><a class="multitabs" href="${ctx }/${menu.url}"><i class=" mdi ${menu.icon}"></i> <span>${menu.name }</span></a> </li>
+	          		<li class="nav-item active"><a class="multitabs" 
+	          		href="${ctx }/${menu.url}"><i class="mdi ${menu.icon}"></i>
+	          		<span>${menu.name }</span></a> </li>
           		</c:when>
+          		
           		<c:otherwise>
         			<li class="nav-item nav-item-has-subnav">
-              		<a href="javascript:void(0)"><i class="mdi ${menu.icon}"></i> <span>${menu.name }</span></a>
+              		<a href="javascript:void(0)"><i class="mdi ${menu.icon}"></i>
+              		<span>${menu.name }</span></a>
 	              	<ul class="nav nav-subnav">
 	              		<c:forEach items="${menu.children }" var="child">
 		                	<li> <a class="multitabs" href="${ctx }/${child.url}">${child.name }</a> </li>
@@ -94,7 +100,7 @@
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="/myupload/${loginUser.pic}" alt="" />
-                <span>${loginUser.name}<span class="caret"></span></span>
+                <span><shiro:principal property="name"></shiro:principal><span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a class="multitabs" data-url="user/profile" href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>

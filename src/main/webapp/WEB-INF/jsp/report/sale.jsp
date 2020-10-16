@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="/WEB-INF/myTags.tld" prefix="my"%>
+<%@ taglib prefix="my" uri="/WEB-INF/myTags.tld" %>
 <!-- 注释掉的原因是: 写了启动类SystemInitHelper.java，在项目启动时就把contextPath放入到了ctx中-->
 <%-- <c:set var="ctx" value="${pageContext.request.contextPath }" /> --%>
 <!DOCTYPE html>
@@ -29,9 +29,7 @@
   
   <div class="row">
     <div class="col-lg-12">
-      <div class="card">
       	<canvas class="demoChart"></canvas>
-      </div>  
     </div>
   </div>
 </div>
@@ -69,7 +67,7 @@ $(document).ready(function(e) {
 		}
 	});
 	
-	
+});	
 	
 	
 function generatorChart(result) {
@@ -100,7 +98,7 @@ function generatorChart(result) {
 	
     
     
-});
+
 </script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xmlns:aop="http://www.springframework.org/schema/aop"
-        xmlns:tx="http://www.springframework.org/schema/tx"
-        xmlns:mvc="http://www.springframework.org/schema/mvc"
-        xmlns:task="http://www.springframework.org/schema/task"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd
@@ -15,76 +14,83 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/task
-        http://www.springframework.org/schema/task/spring-task.xsd ">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-        <!-- 组件扫描 -->
-       <context:component-scan base-package="com.xiaoyu"></context:component-scan>
-       
-       	<!-- 开启注解AOP功能 autoproxy(自动代理)-->
-  		 <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-  
-   		<!-- 配置数据源 -->
-   		<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-   		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-           <property name="url" value="jdbc:mysql://localhost:3306/car4s"/>
-           <property name="username" value="root"/>
-           <property name="password" value="root"/>
-           <!-- 最大连接数 -->
-           <property name="maxActive" value="20"></property>
-           
-           <!-- 初始连接数 -->
-           <property name="initialSize" value="5"></property> 
-   		</bean>	
-   		
-   		<!-- 将SqlSessionFactory交给Spring管理，这个工厂可以生成SqlSession -->
-	   	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	   		<!-- 注入数据源 -->
-	   		<property name="dataSource" ref="dataSource"></property>
-	   		<!-- 指定mybatis配置文件的路径 -->
-	   		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
-	   	</bean>
-   		
-   		<!-- 配置Mapper扫描器，由Spring生成Mapper代理 -->
-	   	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-	   		<property name="basePackage" value="com.xiaoyu.car4s.mapper"></property>
-	   	</bean>
-	   		
-   		<!-- 事物配置开始 -->
-   		<!-- 配置Spring事务管理器 -->
-		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-			<property name="dataSource" ref="dataSource"></property>
-		</bean>
-	   	
-	   	<!-- 开启注解事务管理 -->
-		<tx:annotation-driven transaction-manager="transactionManager"/>
-		
-	   	<!-- 配置事务增强 -->
-	   	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
-			<tx:attributes>
-				设置事务行为
-				<tx:method name="save*" propagation="REQUIRED"/>
-				<tx:method name="update*" propagation="REQUIRED"/>
-				<tx:method name="remove*" propagation="REQUIRED"/>
-				<tx:method name="*" propagation="NOT_SUPPORTED"/>
-			</tx:attributes>
-		</tx:advice>	 --> 
-		
-		<!-- 把事务管理器应用到service方法中 -->
-		
-		<!-- <aop:config>
-			定义切入点
-			<aop:pointcut expression="execution(* com.xiaoyu.service.impl.*.*(..))" id="pc"/>
-			把事务增强织入切入点
-			<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
-		</aop:config> -->
-   		<!-- 事物配置结束 -->
-   		
-   		
-   		<!-- 启用定时任务注解 -->
-   		<task:annotation-driven/>
-   		
-   		<!-- 导入mail的配置 -->
-   		<import resource="classpath*:spring-redis.xml" />
+	<!-- 组件扫描 -->
+	<context:component-scan base-package="com.xiaoyu.car4s"></context:component-scan>
+	
+	<!-- 开启注解AOP功能 autoproxy(自动代理) -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/car4s" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 最大连接数 -->
+		<property name="maxActive" value="20"></property>
+
+		<!-- 初始连接数 -->
+		<property name="initialSize" value="5"></property>
+	</bean>
+
+	<!-- 将SqlSessionFactory交给Spring管理，这个工厂可以生成SqlSession -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 注入数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 指定mybatis配置文件的路径 -->
+		<property name="configLocation"
+			value="classpath:mybatis-config.xml"></property>
+	</bean>
+
+	<!-- 配置Mapper扫描器，由Spring生成Mapper代理 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.xiaoyu.car4s.mapper"></property>
+	</bean>
+
+	<!-- 事物配置开始 -->
+	<!-- 配置Spring事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 开启注解事务管理 -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+	<!-- 配置事务增强 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager"> 
+		<tx:attributes>
+		 <!-- 设置事务行为 --> 
+		 <tx:method name="save*" propagation="REQUIRED"/> 
+		 <tx:method name="update*" propagation="REQUIRED"/> 
+		 <tx:method name="remove*" propagation="REQUIRED"/> 
+		<tx:method name="*" propagation="NOT_SUPPORTED"/> 
+		</tx:attributes> 
+	</tx:advice>
+
+	<!-- 把事务管理器应用到service方法中 -->
+
+	<aop:config> 
+	<!-- 定义切入点 --> 
+		<aop:pointcut expression="execution(* com.xiaoyu.car4s.service.impl.*.*(..))" id="pc"/> 
+		<!-- 把事务增强织入切入点  -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/> 
+	</aop:config>
+	<!-- 事物配置结束 -->
+
+
+	<!-- 启用定时任务注解 -->
+	<!-- <task:annotation-driven /> -->
+
+	<!-- 导入mail的配置 -->
+	<import resource="classpath*:spring-redis.xml" />
+	<!-- --> <import resource="classpath*:spring-shiro.xml" />
+
 </beans>

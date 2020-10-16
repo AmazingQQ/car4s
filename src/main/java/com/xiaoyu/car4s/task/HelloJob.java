@@ -10,6 +10,6 @@ public class HelloJob {
 	
 	@Scheduled(cron = "0 * * * * ?")
 	public void sayHelloEveryMin() {
-		System.out.println("=======Hi!哈哈哈哈" + new Date());
+		System.out.println("=======Hi!哈哈哈哈    " + new Date());
 	}
 }

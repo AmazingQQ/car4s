@@ -40,13 +40,13 @@ public class ReportController {
 			cal.set(Calendar.MILLISECOND,0);
 			
 			Date endDate=cal.getTime();//本月的第一天
-			cal.add(Calendar.MONTH,-6);
+			cal.add(Calendar.MONTH,-20);
 			
 			Date starDate= cal.getTime();//6个月前的第一天
 			
 			List<Map> reportData=reportService.querySaleData(starDate,endDate);
 			
-			System.out.println(reportData);
+			System.out.println("**********************"+reportData);
 			
 			List<Object> labels=new ArrayList<Object>();
 			List<Object> data=new ArrayList<Object>();

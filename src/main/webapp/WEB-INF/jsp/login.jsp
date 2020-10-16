@@ -3,6 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
 <c:set var="ctx" value="${pageContext.request.contextPath }"></c:set>
 
 <!DOCTYPE html>
@@ -64,7 +65,7 @@
       <div class="login-header text-center">
         <a href="index"> <img alt="light year admin" src="images/logo-sidebar.png"> </a>
       </div>
-      <sf:form action="${ctx }/doLogin" method="post" id="loginForm" modelAttribute="userLoginForm">
+      <sf:form action="${ctx }/login" method="post" id="loginForm" modelAttribute="userLoginForm">
         <div class="form-group has-feedback feedback-left">
           <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
           <input type="text" placeholder="请输入您的用户名" class="form-control" name="username" id="username" />

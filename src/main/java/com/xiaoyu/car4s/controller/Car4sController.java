@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.xiaoyu.car4s.entity.User;
 import com.xiaoyu.car4s.service.UserService;
 
-@Controller
+//@Controller
 public class Car4sController {
 	
 	@Autowired 
 	private UserService userService;
-	
-	
 	
 	@RequestMapping("/hello")
 	public String haiHello(Model model) {
