@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.xiaoyu.car4s.entity.Role;
 
-
 public interface RoleService {
 	Map<String, String> all();
 
@@ -21,4 +20,4 @@ public interface RoleService {
 
 	void assignMenuRole(Integer roleId, Integer[] menuIds);
 
- }
+}

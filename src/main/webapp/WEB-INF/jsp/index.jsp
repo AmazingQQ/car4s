@@ -99,8 +99,9 @@
           <ul class="topbar-right">
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
-                <img class="img-avatar img-avatar-48 m-r-10" src="/myupload/${loginUser.pic}" alt="" />
-                <span><shiro:principal property="name"></shiro:principal><span class="caret"></span></span>
+              <%-- <shiro:principal property="pic"></shiro:principal> --%>
+                <img class="img-avatar img-avatar-48 m-r-10" src="/myupload/${loginUser.pic }" alt="" />
+                <span>${loginUser.name }</span><span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a class="multitabs" data-url="user/profile" href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>

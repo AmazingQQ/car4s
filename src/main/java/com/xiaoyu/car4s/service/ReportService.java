@@ -7,5 +7,5 @@ import java.util.Map;
 public interface ReportService {
 
 	List<Map> querySaleData(Date starDate, Date endDate);
-	
+
 }

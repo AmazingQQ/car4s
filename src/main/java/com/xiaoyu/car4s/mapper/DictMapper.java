@@ -10,7 +10,7 @@ import com.xiaoyu.car4s.utils.RedisCache;
 
 @CacheNamespace(implementation = RedisCache.class)
 public interface DictMapper {
-	
+
 	@Select("select * from t_4s_dict where use_flag=1 and del_flag=1 order by dict_name,order_no")
 	List<Dict> selectAllDict();
 

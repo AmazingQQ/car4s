@@ -11,7 +11,7 @@ import com.xiaoyu.car4s.utils.RedisCache;
 
 @CacheNamespace(implementation = RedisCache.class)
 public interface ReportMapper {
-	
-	List<Map> selectSaleData(@Param("sd")Date starDate,@Param("ed")Date endDate);
-	
+
+	List<Map> selectSaleData(@Param("sd") Date starDate, @Param("ed") Date endDate);
+
 }

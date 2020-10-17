@@ -23,7 +23,5 @@
        </plugin>
 	</plugins>
   
- 
-  
 </configuration>
 <!-- 增加mybatis的核心配置文件  -->

@@ -61,7 +61,7 @@ public class MenuController {
 	public String editRole(Model model, Integer id) {
 		Menu menu = menuService.findById(id);
 		model.addAttribute("menu", menu);
-		
+
 		Map<String, String> menuMap = menuService.findParntId();
 		model.addAttribute("menuMap", menuMap);
 		return "menu/edit";

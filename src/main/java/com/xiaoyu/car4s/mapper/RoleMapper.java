@@ -15,11 +15,10 @@ import com.xiaoyu.car4s.utils.RedisCache;
 
 @CacheNamespace(implementation = RedisCache.class)
 public interface RoleMapper {
-	
+
 	@Select("select * from t_4s_role where del_flag=1")
 	List<Role> all();
-	
-	
+
 	List<Role> roleAll(Map<String, Object> map);
 
 	@Insert("insert into t_4s_role(name,del_flag) values(#{name},#{delFlag})")
@@ -31,12 +30,10 @@ public interface RoleMapper {
 	@Update("update t_4s_role set name=#{name} where id=#{id}")
 	void update(Role role);
 
-	
 	void deleteRole(String[] ids);
 
 	@Delete("delete from t_4s_role2menu where role_id=#{roleId}")
 	void deleteRoleMenus(Integer roleId);
 
-	
-	void insertRoleMenus(@Param("roleId") Integer roleId,@Param("menuIds") Integer[] menuIds);
+	void insertRoleMenus(@Param("roleId") Integer roleId, @Param("menuIds") Integer[] menuIds);
 }

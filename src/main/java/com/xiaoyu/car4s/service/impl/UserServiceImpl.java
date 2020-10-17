@@ -11,11 +11,11 @@ import com.xiaoyu.car4s.mapper.UserMapper;
 import com.xiaoyu.car4s.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Override
 	public List<User> all() {
 		List<User> list = userMapper.all();
@@ -24,14 +24,14 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User findByUsername(String username) {
-		User user=userMapper.findByUsername(username);
+		User user = userMapper.findByUsername(username);
 		return user;
 	}
 
 	@Override
 	public void register(User user) {
 		userMapper.register(user);
-		
+
 	}
 
 	@Override
@@ -43,32 +43,32 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findByParam(Map<String, Object> map) {
-		List<User> userList=userMapper.findByParam(map);
+		List<User> userList = userMapper.findByParam(map);
 		return userList;
 	}
 
 	@Override
 	public void saveUser(User user) {
 		userMapper.insert(user);
-		
+
 	}
 
 	@Override
 	public User findById(Integer id) {
-		User user=userMapper.findById(id);
+		User user = userMapper.findById(id);
 		return user;
 	}
 
 	@Override
 	public void updateUser(User user) {
 		userMapper.updateUser(user);
-		
+
 	}
 
 	@Override
 	public void deleteUser(String[] ids) {
 		userMapper.updateDelFlag(ids);
-		
+
 	}
 
 }

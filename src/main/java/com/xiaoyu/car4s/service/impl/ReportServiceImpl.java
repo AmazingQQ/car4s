@@ -11,14 +11,14 @@ import com.xiaoyu.car4s.mapper.ReportMapper;
 import com.xiaoyu.car4s.service.ReportService;
 
 @Service
-public class ReportServiceImpl implements ReportService{
-	
+public class ReportServiceImpl implements ReportService {
+
 	@Autowired
 	private ReportMapper reportMapper;
-	
+
 	@Override
 	public List<Map> querySaleData(Date starDate, Date endDate) {
-		return reportMapper.selectSaleData(starDate,endDate);
+		return reportMapper.selectSaleData(starDate, endDate);
 	}
 
 }

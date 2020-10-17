@@ -28,7 +28,7 @@
           
           <form method="post" action="${ctx }/user/update" class="site-form" enctype="multipart/form-data" id="formImg">
           	<input type="text" name="id" value="${loginUser.id }" hidden="hidden">
-            <img src="/myupload/${loginUser.pic }" alt="..." class="img-avatar" id="file_img">
+            <img src="/myupload/${loginUser.pic }" class="img-avatar" id="file_img">
             <div class="avatar-divider">
             	<br>
             	&nbsp;&nbsp;&nbsp;<div class="btn btn-pink btn-xs" onclick="getFile()">修改头像</div>

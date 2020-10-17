@@ -24,5 +24,5 @@ public interface MenuService {
 	List<Menu> findRootMenu4Assgin(Integer roleId);
 
 	List<Menu> findSideMenuByUserId(Integer userId);
-	
+
 }
